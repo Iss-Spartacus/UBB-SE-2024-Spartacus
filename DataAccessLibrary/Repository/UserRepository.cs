@@ -16,7 +16,7 @@ namespace DataAccessLibrary.Repository
 
         public UserRepository(Configuration configurationManager)
         {
-            _connectionString = configurationManager.GetConnectionString("appsettings.json");
+            _connectionString = configurationManager.GetConnectionString("connectionSpartacus");
         }
         public int AddEntity(User entity)
         {

@@ -17,7 +17,7 @@ namespace DataAccessLibrary.Repository
 
         public WeaponRepository(Configuration configurationManager)
         {
-            _connectionString = configurationManager.GetConnectionString("appsettings.json");
+            _connectionString = configurationManager.GetConnectionString("connectionSpartacus");
         }
         public int AddEntity(Weapon entity)
         {
