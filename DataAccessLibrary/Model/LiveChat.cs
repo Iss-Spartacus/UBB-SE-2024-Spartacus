@@ -10,7 +10,7 @@ namespace DataAccessLibrary.Model
     {
         public int Id { get; set; }
         public int MatchId { get; set; } // Foreign key reference
-        public Matches Match { get; set; } // Navigation property
+        public Match Match { get; set; } // Navigation property
         public string Content { get; set; }
         public DateTime TimeStamp { get; set; }
 

@@ -19,7 +19,7 @@ namespace DataAccessLibrary.Model
         public List<Employee> Fighters { get; set; } = new List<Employee>();
 
         // List of matches in the tournament
-        public List<Matches> Matches { get; set; } = new List<Matches>();
+        public List<Match> Matches { get; set; } = new List<Match>();
 
         public Tournament(int id, DateTime startDateTime, DateTime endDateTime, int arenaId, bool isFinished)
         {

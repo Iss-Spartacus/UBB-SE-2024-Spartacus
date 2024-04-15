@@ -14,33 +14,33 @@ namespace DataAccessLibrary.Model
         public Account Account { get; set; } // Navigation property
         public Dictionary<string, int> TakenBribery { get; set; } = new Dictionary<string, int>();
 
-    }
-    public Manager(int id, string name, int accountId)
-    {
-        Id = id;
-        Name = name;
-        AccountId = accountId;
-    }
-
-    public void AddBribery(string employeeName, int amount)
-    {
-        if (!TakenBribery.ContainsKey(employeeName))
+        public Manager(int id, string name, int accountId)
         {
-            TakenBribery.Add(employeeName, amount);
+            Id = id;
+            Name = name;
+            AccountId = accountId;
         }
-        else
-        {
-            // If the employee already exists in the dictionary, update the bribery amount
-            TakenBribery[employeeName] += amount;
-        }
-    }
 
-    // Method to remove bribery information from the dictionary
-    public void RemoveBribery(string employeeName)
-    {
-        if (TakenBribery.ContainsKey(employeeName))
+        public void AddBribery(string employeeName, int amount)
         {
-            TakenBribery.Remove(employeeName);
+            if (!TakenBribery.ContainsKey(employeeName))
+            {
+                TakenBribery.Add(employeeName, amount);
+            }
+            else
+            {
+                // If the employee already exists in the dictionary, update the bribery amount
+                TakenBribery[employeeName] += amount;
+            }
+        }
+
+        // Method to remove bribery information from the dictionary
+        public void RemoveBribery(string employeeName)
+        {
+            if (TakenBribery.ContainsKey(employeeName))
+            {
+                TakenBribery.Remove(employeeName);
+            }
         }
     }
 }
