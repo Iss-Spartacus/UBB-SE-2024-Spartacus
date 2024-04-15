@@ -18,6 +18,7 @@
         <Label x:Name="labelSecondPlayerPower" Content="Power Player 2" HorizontalAlignment="Left" Margin="605,212,0,0" VerticalAlignment="Top"/>
         <Image x:Name="imagePlayer1" HorizontalAlignment="Left" Height="153" Margin="38,22,0,0" VerticalAlignment="Top" Width="200" Source="/Views/geacnoris.jpg"/>
         <Image x:Name="imagePlayer2" HorizontalAlignment="Left" Height="156" Margin="549,22,0,0" VerticalAlignment="Top" Width="200" Source="/Views/brusli.jpg"/>
+        <ScrollViewer x:Name="chatScrollView" HorizontalAlignment="Left" Height="274" Margin="284,10,0,0" VerticalAlignment="Top" Width="204"/>
 
     </Grid>
 </Window>

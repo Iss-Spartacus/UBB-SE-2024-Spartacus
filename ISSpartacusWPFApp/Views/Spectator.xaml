@@ -20,6 +20,7 @@
             <Image x:Name="imageFirstPlayer" HorizontalAlignment="Left" Height="156" Margin="549,22,0,0" VerticalAlignment="Top" Width="200" Source="/Views/brusli.jpg"/>
             <Label x:Name="labelCotaFirstPlayer" Content="Cota Player 1" HorizontalAlignment="Left" Margin="101,299,0,0" VerticalAlignment="Top"/>
             <Label x:Name="labelCotaSecondPlayer" Content="Cota Player 2" HorizontalAlignment="Left" Margin="609,299,0,0" VerticalAlignment="Top"/>
+            <ScrollViewer x:Name="chatScrollView" HorizontalAlignment="Center" Height="274" Margin="0,13,0,0" VerticalAlignment="Top" Width="204"/>
         </Grid>
     </Grid>
 </Window>
