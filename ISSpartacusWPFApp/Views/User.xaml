@@ -7,23 +7,6 @@
         mc:Ignorable="d"
         Title="User" Height="450" Width="800">
     <Grid>
-<<<<<<< HEAD
-        <Grid>
-            <Label x:Name="labelFirstPlayerName" Content="Player 1" HorizontalAlignment="Left" Margin="110,185,0,0" VerticalAlignment="Top" Height="32" Width="56"/>
-            <Label x:Name="labelSecondPlayerName" Content="Player 2" HorizontalAlignment="Left" Margin="621,183,0,0" VerticalAlignment="Top" Height="32" Width="56"/>
-            <Label x:Name="labelFirstPlayerLife" Content="Life Player 1" HorizontalAlignment="Left" Margin="101,245,0,0" VerticalAlignment="Top"/>
-            <Label x:Name="labelSecondPlayerLife" Content="Life Player 2" HorizontalAlignment="Left" Margin="612,245,0,0" VerticalAlignment="Top"/>
-            <Button x:Name="buttonPariuFirstPlayer" Content="1 Milion pe Player 1" HorizontalAlignment="Left" Margin="69,330,0,0" VerticalAlignment="Top" Height="32" Width="138"/>
-            <Button x:Name="buttonPariuSecondPlayer" Content="1 Milion pe Player 2" HorizontalAlignment="Left" Margin="580,330,0,0" VerticalAlignment="Top" Height="32" Width="138"/>
-            <Label x:Name="labelFirstPlayerPower" Content="Power Player 1" HorizontalAlignment="Left" Margin="94,217,0,0" VerticalAlignment="Top"/>
-            <Label x:Name="labelSecondPlayerPower" Content="Power Player 2" HorizontalAlignment="Left" Margin="605,212,0,0" VerticalAlignment="Top"/>
-            <Image x:Name="imageSecondPlayer" HorizontalAlignment="Left" Height="153" Margin="38,22,0,0" VerticalAlignment="Top" Width="200" Source="/Views/geacnoris.jpg"/>
-            <Image x:Name="imageFirstPlayer" HorizontalAlignment="Left" Height="156" Margin="549,22,0,0" VerticalAlignment="Top" Width="200" Source="/Views/brusli.jpg"/>
-            <Label x:Name="labelCotaFirstPlayer" Content="Cota Player 1" HorizontalAlignment="Left" Margin="101,299,0,0" VerticalAlignment="Top"/>
-            <Label x:Name="labelCotaSecondPlayer" Content="Cota Player 2" HorizontalAlignment="Left" Margin="609,299,0,0" VerticalAlignment="Top"/>
-
-        </Grid>
-=======
         <TextBlock HorizontalAlignment="Left" Height="28" Margin="10,71,0,0" TextWrapping="Wrap" Text="Balance:" VerticalAlignment="Top" Width="84" FontSize="20"/>
         <TextBlock x:Name="balance" HorizontalAlignment="Left" Height="28" Margin="99,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="73" FontSize="20"/>
         <Rectangle HorizontalAlignment="Left" Height="222" Margin="19,165,0,0" Stroke="Black" VerticalAlignment="Top" Width="245"/>
@@ -34,7 +17,6 @@
         <TextBlock HorizontalAlignment="Left" Height="34" Margin="105,165,0,0" TextWrapping="Wrap" Text="Options" VerticalAlignment="Top" Width="73" FontSize="20"/>
         <ScrollViewer x:Name="chatScrollView" HorizontalAlignment="Left" Height="312" Margin="543,45,0,0" VerticalAlignment="Top" Width="232"/>
         <TextBox x:Name="chatInput" HorizontalAlignment="Left" Height="20" Margin="543,359,0,0" TextWrapping="Wrap" Text="Message..." VerticalAlignment="Top" Width="232" TextChanged="TextBox_TextChanged"/>
->>>>>>> 82d467c220d242e06f224eea00085ff48059a509
 
     </Grid>
 </Window>
