@@ -23,5 +23,27 @@ namespace ISSpartacusWPFApp.Views.Authentication
         {
             InitializeComponent();
         }
+        private void Register_Click(object sender, RoutedEventArgs e)
+        {
+            string fullName = txtFullName.Text;
+            string username = txtUsername.Text;
+            string password = txtPassword.Password;
+            string confirmPassword = txtConfirmPassword.Password;
+
+            if (string.IsNullOrEmpty(fullName) || string.IsNullOrEmpty(username) ||
+                string.IsNullOrEmpty(password) || string.IsNullOrEmpty(confirmPassword))
+            {
+                txtMessage.Text = "Please fill in all fields.";
+                return;
+            }
+
+            if (password != confirmPassword)
+            {
+                txtMessage.Text = "Passwords do not match.";
+                return;
+            }
+
+            txtMessage.Text = "Registration successful!";
+        }
     }
 }
