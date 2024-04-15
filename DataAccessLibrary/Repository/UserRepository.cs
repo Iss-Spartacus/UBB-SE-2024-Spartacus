@@ -1,9 +1,12 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DataAccessLibrary.Model
+using ConfigurationLoader;
+using DataAccessLibrary.Model;
+using Microsoft.Data.SqlClient;
 
 namespace DataAccessLibrary.Repository
 {
@@ -11,7 +14,7 @@ namespace DataAccessLibrary.Repository
     {
         private readonly string _connectionString;
 
-        public UserRepository(IConfigurationManager configurationManager)
+        public UserRepository(Configuration configurationManager)
         {
             _connectionString = configurationManager.GetConnectionString("appsettings.json");
         }
@@ -78,43 +81,22 @@ namespace DataAccessLibrary.Repository
 
             while (reader.Read())
             {
-                User user = new()
-                {
-                    Id = reader.GetInt32(0),
-                    UserName = reader.GetString(1),
-                    AccountId = reader.GetInt32(2),
-                };
+                User user = new
+                (
+                    id : reader.GetInt32(0),
+                    userName : reader.GetString(1),
+                    accountId : reader.GetInt32(2)
+                );
 
                 users.Add(user);
             }
 
             return users;
         }
-        public IEnumerable<User> GetAllEntities()
+
+        public User? GetEntity(int entityId)
         {
-            using SqlConnection connection = new(_connectionString);
-            connection.Open();
-
-            SqlCommand command = connection.CreateCommand();
-            command.CommandType = CommandType.Text;
-            command.CommandText = "SELECT * FROM Users";
-
-            SqlDataReader reader = command.ExecuteReader();
-            List<User> users = new List<User>();
-
-            while (reader.Read())
-            {
-                User user = new()
-                {
-                    Id = reader.GetInt32(0),
-                    UserName = reader.GetString(1),
-                    AccountId = reader.GetInt32(2),
-                };
-
-                users.Add(user);
-            }
-
-            return users;
+            throw new NotImplementedException();
         }
     }
 }

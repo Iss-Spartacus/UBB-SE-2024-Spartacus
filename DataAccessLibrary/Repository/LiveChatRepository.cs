@@ -1,9 +1,12 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ConfigurationLoader;
 using DataAccessLibrary.Model;
+using Microsoft.Data.SqlClient;
 
 namespace DataAccessLibrary.Repository
 {
@@ -11,7 +14,7 @@ namespace DataAccessLibrary.Repository
     {
         private readonly string _connectionString;
 
-        public LiveChatRepository(IConfigurationManager configurationManager)
+        public LiveChatRepository(Configuration configurationManager)
         {
             _connectionString = configurationManager.GetConnectionString("appsettings.json");
         }
@@ -81,13 +84,13 @@ namespace DataAccessLibrary.Repository
 
             while (reader.Read())
             {
-                LiveChat liveChat = new()
-                {
-                    Id = reader.GetInt32(0),
-                    MatchId = reader.GetInt32(1),
-                    Content = reader.GetString(2),
-                    TimeStamp = reader.GetDateTime(3),
-                };
+                LiveChat liveChat = new
+                (
+                    id : reader.GetInt32(0),
+                    matchId : reader.GetInt32(1),
+                    content : reader.GetString(2),
+                    timeStamp : reader.GetDateTime(3)
+                );
 
                 liveChats.Add(liveChat);
             }
@@ -111,13 +114,13 @@ namespace DataAccessLibrary.Repository
                 return null;
             }
 
-            LiveChat liveChat = new()
-            {
-                Id = reader.GetInt32(0),
-                MatchId = reader.GetInt32(1),
-                Content = reader.GetString(2),
-                TimeStamp = reader.GetDateTime(3),
-            };
+            LiveChat liveChat = new
+            (
+                id: reader.GetInt32(0),
+                matchId: reader.GetInt32(1),
+                content: reader.GetString(2),
+                timeStamp: reader.GetDateTime(3)
+            );
 
             return liveChat;
         }

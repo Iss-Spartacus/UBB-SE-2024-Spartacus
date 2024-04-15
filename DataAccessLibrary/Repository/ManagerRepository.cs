@@ -1,9 +1,12 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ConfigurationLoader;
 using DataAccessLibrary.Model;
+using Microsoft.Data.SqlClient;
 
 namespace DataAccessLibrary.Repository
 {
@@ -11,7 +14,7 @@ namespace DataAccessLibrary.Repository
     {
         private readonly string _connectionString;
 
-        public ManagerRepository(IConfigurationManager configurationManager)
+        public ManagerRepository(Configuration configurationManager)
         {
             _connectionString = configurationManager.GetConnectionString("appsettings.json");
         }
@@ -78,12 +81,12 @@ namespace DataAccessLibrary.Repository
 
             while (reader.Read())
             {
-                Manager manager = new()
-                {
-                    Id = reader.GetInt32(0),
-                    Name = reader.GetString(1),
-                    AccountId = reader.GetInt32(2),
-                };
+                Manager manager = new
+                (
+                    id : reader.GetInt32(0),
+                    name : reader.GetString(1),
+                    accountId : reader.GetInt32(2)
+                );
 
                 managers.Add(manager);
             }
@@ -107,12 +110,12 @@ namespace DataAccessLibrary.Repository
                 return null;
             }
 
-            Manager manager = new()
-            {
-                Id = reader.GetInt32(0),
-                Name = reader.GetString(1),
-                AccountId = reader.GetInt32(2),
-            };
+            Manager manager = new
+            (
+                id: reader.GetInt32(0),
+                name: reader.GetString(1),
+                accountId: reader.GetInt32(2)
+            );
 
             return manager;
         }

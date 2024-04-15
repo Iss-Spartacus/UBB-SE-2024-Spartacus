@@ -1,9 +1,13 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DataAccessLibrary.Model
+using ConfigurationLoader;
+using DataAccessLibrary.Model;
+using Microsoft.Data.SqlClient;
+
 
 namespace DataAccessLibrary.Repository
 {
@@ -11,7 +15,7 @@ namespace DataAccessLibrary.Repository
     {
         private readonly string _connectionString;
 
-        public WeaponRepository(IConfigurationManager configurationManager)
+        public WeaponRepository(Configuration configurationManager)
         {
             _connectionString = configurationManager.GetConnectionString("appsettings.json");
         }
@@ -92,7 +96,7 @@ namespace DataAccessLibrary.Repository
                 string name = reader.GetString(1);
                 int power = reader.GetInt32(2);
                 string type = reader.GetString(3);
-                decimal price = reader.GetDecimal(4);
+                int price = reader.GetInt32(4);
                 bool availability = reader.GetBoolean(5);
 
                 Weapon weapon = new(id, name, power, type, price, availability);
@@ -100,6 +104,41 @@ namespace DataAccessLibrary.Repository
             }
 
             return weapons;
+        }
+
+        IEnumerable<Weapon> IRepository<Weapon>.GetAllEntities()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Weapon? GetEntity(int entityId)
+        {
+            using SqlConnection connection = new(_connectionString);
+            connection.Open();
+
+            SqlCommand command = connection.CreateCommand();
+            command.CommandType = CommandType.Text;
+            command.CommandText = "SELECT * FROM Weapons WHERE id = @id";
+            command.Parameters.AddWithValue("@id", entityId);
+
+            SqlDataReader reader = command.ExecuteReader();
+
+            if (reader.Read())
+            {
+                int id = reader.GetInt32(0);
+                string name = reader.GetString(1);
+                int power = reader.GetInt32(2);
+                string type = reader.GetString(3);
+                int price = reader.GetInt32(4);
+                bool availability = reader.GetBoolean(5);
+
+                Weapon weapon = new Weapon(id, name, power, type, price, availability);
+                return weapon;
+            }
+            else
+            {
+                return null; // Weapon not found
+            }
         }
     }
 }

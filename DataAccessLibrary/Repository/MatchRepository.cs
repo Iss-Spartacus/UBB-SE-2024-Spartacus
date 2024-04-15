@@ -1,9 +1,13 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DataAccessLibrary.Model
+using ConfigurationLoader;
+using DataAccessLibrary.Model;
+using Microsoft.Data.SqlClient;
+using Microsoft.IdentityModel.Protocols;
 
 namespace DataAccessLibrary.Repository
 {
@@ -11,7 +15,7 @@ namespace DataAccessLibrary.Repository
     {
         private readonly string _connectionString;
 
-        public MatchRepository(IConfigurationManager configurationManager)
+        public MatchRepository(Configuration configurationManager)
         {
             _connectionString = configurationManager.GetConnectionString("appsettings.json");
         }
@@ -87,15 +91,15 @@ namespace DataAccessLibrary.Repository
 
             while (reader.Read())
             {
-                Match match = new()
-                {
-                    Id = reader.GetInt32(0),
-                    TournamentId = reader.GetInt32(1),
-                    Employee1Id = reader.GetInt32(2),
-                    Employee2Id = reader.GetInt32(3),
-                    RegistrationDate = reader.GetDateTime(4),
-                    WinnerId = reader.GetInt32(5),
-                };
+                Match match = new
+                (
+                    id : reader.GetInt32(0),
+                    tournamentId : reader.GetInt32(1),
+                    employee1Id : reader.GetInt32(2),
+                    employee2Id : reader.GetInt32(3),
+                    registrationDate : reader.GetDateTime(4),
+                    winnerId : reader.GetInt32(5)
+                );
 
                 // Retrieve observers for the match
                 match.Observers = GetObserversForMatch(match.Id);
@@ -122,21 +126,27 @@ namespace DataAccessLibrary.Repository
                 return null;
             }
 
-            Match match = new()
-            {
-                Id = reader.GetInt32(0),
-                TournamentId = reader.GetInt32(1),
-                Employee1Id = reader.GetInt32(2),
-                Employee2Id = reader.GetInt32(3),
-                RegistrationDate = reader.GetDateTime(4),
-                WinnerId = reader.GetInt32(5),
-            };
+            Match match = new
+            (
+                id: reader.GetInt32(0),
+                tournamentId: reader.GetInt32(1),
+                employee1Id: reader.GetInt32(2),
+                employee2Id: reader.GetInt32(3),
+                registrationDate: reader.GetDateTime(4),
+                winnerId: reader.GetInt32(5)
+            );
 
             // Retrieve observers for the match
             match.Observers = GetObserversForMatch(match.Id);
 
             return match;
         }
+
+        private List<MatchObserver> GetObserversForMatch(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public void AddObserver(int matchId, MatchObserver observer)
         {
             using SqlConnection connection = new(_connectionString);
@@ -149,7 +159,7 @@ namespace DataAccessLibrary.Repository
         VALUES (@MatchId, @EmployeeId);
         SELECT SCOPE_IDENTITY();";
             command.Parameters.AddWithValue("@MatchId", matchId);
-            command.Parameters.AddWithValue("@EmployeeId", observer.EmployeeId);
+            command.Parameters.AddWithValue("@EmployeeId", observer.UserId);
 
             int newObserverId = Convert.ToInt32(command.ExecuteScalar());
         }

@@ -1,9 +1,12 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ConfigurationLoader;
 using DataAccessLibrary.Model;
+using Microsoft.Data.SqlClient;
 
 
 namespace DataAccessLibrary.Repository
@@ -12,7 +15,7 @@ namespace DataAccessLibrary.Repository
     {
         private readonly string _connectionString;
 
-        public BettingRepository(IConfigurationManager configurationManager)
+        public BettingRepository(Configuration configurationManager)
         {
             _connectionString = configurationManager.GetConnectionString("appsettings.json");
         }
@@ -88,15 +91,15 @@ namespace DataAccessLibrary.Repository
 
             while (reader.Read())
             {
-                Betting betting = new()
-                {
-                    Id = reader.GetInt32(0),
-                    AccountId = reader.GetInt32(1),
-                    Amount = reader.GetFloat(2),
-                    BetOnId = reader.GetInt32(3),
-                    InitialOdd = reader.GetInt32(4),
-                    MatchId = reader.GetInt32(5),
-                };
+                Betting betting = new
+                (
+                    id : reader.GetInt32(0),
+                    accountId : reader.GetInt32(1),
+                    amount : reader.GetFloat(2),
+                    betOnId : reader.GetInt32(3),
+                    initialOdd : reader.GetInt32(4),
+                    matchId : reader.GetInt32(5)
+                );
 
                 bettings.Add(betting);
             }
@@ -120,15 +123,15 @@ namespace DataAccessLibrary.Repository
                 return null;
             }
 
-            Betting betting = new()
-            {
-                Id = reader.GetInt32(0),
-                AccountId = reader.GetInt32(1),
-                Amount = reader.GetFloat(2),
-                BetOnId = reader.GetInt32(3),
-                InitialOdd = reader.GetInt32(4),
-                MatchId = reader.GetInt32(5),
-            };
+            Betting betting = new
+            (
+                id: reader.GetInt32(0),
+                accountId: reader.GetInt32(1),
+                amount: reader.GetFloat(2),
+                betOnId: reader.GetInt32(3),
+                initialOdd: reader.GetInt32(4),
+                matchId: reader.GetInt32(5)
+            );
 
             return betting;
         }

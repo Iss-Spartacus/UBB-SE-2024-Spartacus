@@ -1,9 +1,12 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ConfigurationLoader;
 using DataAccessLibrary.Model;
+using Microsoft.Data.SqlClient;
 
 namespace DataAccessLibrary.Repository
 {
@@ -11,7 +14,7 @@ namespace DataAccessLibrary.Repository
     {
         private readonly string _connectionString;
 
-        public ArenaRepository(IConfigurationManager configurationManager)
+        public ArenaRepository(Configuration configurationManager)
         {
             _connectionString = configurationManager.GetConnectionString("appsettings.json");
         }
@@ -78,12 +81,11 @@ namespace DataAccessLibrary.Repository
 
             while (reader.Read())
             {
-                Arena arena = new()
-                {
-                    Id = reader.GetInt32(0),
-                    Capacity = reader.GetInt32(1),
-                    Location = reader.GetString(2),
-                };
+                Arena arena = new Arena(
+                    id: reader.GetInt32(0),
+                    capacity: reader.GetInt32(1),
+                    location: reader.GetString(2)
+                );
 
                 arenas.Add(arena);
             }
@@ -107,12 +109,12 @@ namespace DataAccessLibrary.Repository
                 return null;
             }
 
-            Arena arena = new()
-            {
-                Id = reader.GetInt32(0),
-                Capacity = reader.GetInt32(1),
-                Location = reader.GetString(2),
-            };
+            Arena arena = new
+            (
+                id: reader.GetInt32(0),
+                capacity: reader.GetInt32(1),
+                location: reader.GetString(2)
+            );
 
             return arena;
         }
