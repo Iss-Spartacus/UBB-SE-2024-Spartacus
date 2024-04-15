@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ConfigurationLoader;
+using DataAccessLibrary.Repository;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,7 +26,7 @@ namespace ISSpartacusWPFApp.Views.Authentication
             InitializeComponent();
         }
         private void Register_Click(object sender, RoutedEventArgs e)
-        {
+        {        
             string fullName = txtFullName.Text;
             string username = txtUsername.Text;
             string password = txtPassword.Password;
@@ -44,6 +46,7 @@ namespace ISSpartacusWPFApp.Views.Authentication
             }
 
             txtMessage.Text = "Registration successful!";
+
         }
     }
 }
