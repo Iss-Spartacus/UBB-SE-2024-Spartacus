@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\madal\\OneDrive\\Desktop\\DataAccessLibrary\\DataAccessLibrary.csproj",
+      "projectUniqueName": "C:\\Users\\madal\\OneDrive\\Desktop\\UBB-SE-2024-Spartacus\\DataAccessLibrary\\DataAccessLibrary.csproj",
       "projectName": "DataAccessLibrary",
-      "projectPath": "C:\\Users\\madal\\OneDrive\\Desktop\\DataAccessLibrary\\DataAccessLibrary.csproj",
+      "projectPath": "C:\\Users\\madal\\OneDrive\\Desktop\\UBB-SE-2024-Spartacus\\DataAccessLibrary\\DataAccessLibrary.csproj",
       "packagesPath": "C:\\Users\\madal\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\madal\\OneDrive\\Desktop\\DataAccessLibrary\\obj\\",
+      "outputPath": "C:\\Users\\madal\\OneDrive\\Desktop\\UBB-SE-2024-Spartacus\\DataAccessLibrary\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\madal\\AppData\\Roaming\\NuGet\\NuGet.Config",
