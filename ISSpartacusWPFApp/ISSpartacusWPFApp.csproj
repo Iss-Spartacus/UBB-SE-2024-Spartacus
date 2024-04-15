@@ -9,12 +9,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Views\brusli.jpg" />
+    <None Remove="Views\geacnoris.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\DataAccessLibrary\DataAccessLibrary.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\" />
     <Folder Include="Service\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Views\brusli.jpg" />
+    <Resource Include="Views\geacnoris.jpg" />
   </ItemGroup>
 
 </Project>
