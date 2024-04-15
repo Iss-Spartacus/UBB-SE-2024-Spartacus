@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DataAccessLibrary.Model
+using ConfigurationLoader;
+using DataAccessLibrary.Model;
+using Microsoft.Data.SqlClient;
 
 namespace DataAccessLibrary.Repository
 {
@@ -11,7 +14,7 @@ namespace DataAccessLibrary.Repository
     {
         private readonly string _connectionString;
 
-        public AccountRepository(IConfigurationManager configurationManager)
+        public AccountRepository(Configuration configurationManager)
         {
             _connectionString = configurationManager.GetConnectionString("appsettings.json");
         }
@@ -84,46 +87,23 @@ namespace DataAccessLibrary.Repository
 
             while (reader.Read())
             {
-                Account account = new()
-                {
-                    Id = reader.GetInt32(0),
-                    Email = reader.GetString(1),
-                    Username = reader.GetString(2),
-                    Password = reader.GetString(3),
-                    IsAdult = reader.GetBoolean(4),
-                };
+                Account account = new Account
+                (
+                    email: reader.GetString(1),
+                    username: reader.GetString(2),
+                    password: reader.GetString(3),
+                    isAdult: reader.GetBoolean(4)
+                );
 
                 accounts.Add(account);
             }
 
             return accounts;
         }
-        public IEnumerable<Account> GetAllEntities()
+
+        public Account? GetEntity(int entityId)
         {
-            using SqlConnection connection = new(_connectionString);
-            connection.Open();
-
-            SqlCommand command = connection.CreateCommand();
-            command.CommandType = CommandType.Text;
-            command.CommandText = "SELECT * FROM Accounts";
-
-            SqlDataReader reader = command.ExecuteReader();
-            List<Account> accounts = new List<Account>();
-
-            while (reader.Read())
-            {
-                Account account = new()
-                {
-                    Id = reader.GetInt32(0),
-                    Email = reader.GetString(1),
-                    Username = reader.GetString(2),
-                    Password = reader.GetString(3),
-                    IsAdult = reader.GetBoolean(4),
-                };
-
-                accounts.Add(account);
-            }
-
-            return accounts;
+            throw new NotImplementedException();
         }
     }
+}

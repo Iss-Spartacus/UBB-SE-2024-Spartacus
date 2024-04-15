@@ -1,9 +1,12 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ConfigurationLoader;
 using DataAccessLibrary.Model;
+using Microsoft.Data.SqlClient;
 
 namespace DataAccessLibrary.Repository
 {
@@ -11,7 +14,7 @@ namespace DataAccessLibrary.Repository
     {
         private readonly string _connectionString;
 
-        public EmployeeRepository(IConfigurationManager configurationManager)
+        public EmployeeRepository(Configuration configurationManager)
         {
             _connectionString = configurationManager.GetConnectionString("appsettings.json");
         }
@@ -90,16 +93,16 @@ namespace DataAccessLibrary.Repository
 
             while (reader.Read())
             {
-                Employee employee = new()
-                {
-                    Id = reader.GetInt32(0),
-                    FullName = reader.GetString(1),
-                    Power = reader.GetInt32(2),
-                    Money = reader.GetInt32(3),
-                    PhotoFilePath = reader.GetString(4),
-                    ReadyToFight = reader.GetBoolean(5),
-                    AccountId = reader.GetInt32(6),
-                };
+                Employee employee = new
+                (
+                    id : reader.GetInt32(0),
+                    fullName: reader.GetString(1),
+                    power: reader.GetInt32(2),
+                    money: reader.GetInt32(3),
+                    photoFilePath: reader.GetString(4),
+                    readyToFight: reader.GetBoolean(5),
+                    accountId: reader.GetInt32(6)
+                );
 
                 employees.Add(employee);
             }
@@ -123,16 +126,16 @@ namespace DataAccessLibrary.Repository
                 return null;
             }
 
-            Employee employee = new()
-            {
-                Id = reader.GetInt32(0),
-                FullName = reader.GetString(1),
-                Power = reader.GetInt32(2),
-                Money = reader.GetInt32(3),
-                PhotoFilePath = reader.GetString(4),
-                ReadyToFight = reader.GetBoolean(5),
-                AccountId = reader.GetInt32(6),
-            };
+            Employee employee = new
+            (
+                id: reader.GetInt32(0),
+                fullName: reader.GetString(1),
+                power: reader.GetInt32(2),
+                money: reader.GetInt32(3),
+                photoFilePath: reader.GetString(4),
+                readyToFight: reader.GetBoolean(5),
+                accountId: reader.GetInt32(6)
+            );
 
             return employee;
         }
