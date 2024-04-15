@@ -26,7 +26,7 @@ namespace DataAccessLibrary.Repository
             SqlCommand command = connection.CreateCommand();
             command.CommandType = CommandType.Text;
             command.CommandText = @"
-                INSERT INTO Accounts (Email, Username, Password, IsAdult)
+                INSERT INTO Account (account_email, account_username, account_password, account_age)
                 VALUES (@Email, @Username, @Password, @IsAdult);
                 SELECT SCOPE_IDENTITY();";
             command.Parameters.AddWithValue("@Email", entity.Email);
@@ -44,7 +44,7 @@ namespace DataAccessLibrary.Repository
 
             SqlCommand command = connection.CreateCommand();
             command.CommandType = CommandType.Text;
-            command.CommandText = "DELETE FROM Accounts WHERE Accounts.id = @id";
+            command.CommandText = "DELETE FROM Account WHERE Account.id = @id";
             command.Parameters.AddWithValue("@id", id);
 
             int rowsAffected = command.ExecuteNonQuery();
@@ -58,7 +58,7 @@ namespace DataAccessLibrary.Repository
             SqlCommand command = connection.CreateCommand();
             command.CommandType = CommandType.Text;
             command.CommandText = @"
-                UPDATE Accounts
+                UPDATE Account
                 SET Email = @Email,
                     Username = @Username,
                     Password = @Password,
@@ -80,7 +80,7 @@ namespace DataAccessLibrary.Repository
 
             SqlCommand command = connection.CreateCommand();
             command.CommandType = CommandType.Text;
-            command.CommandText = "SELECT * FROM Accounts";
+            command.CommandText = "SELECT * FROM Account";
 
             SqlDataReader reader = command.ExecuteReader();
             List<Account> accounts = new List<Account>();
