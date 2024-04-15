@@ -1,9 +1,12 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ConfigurationLoader;
 using DataAccessLibrary.Model;
+using Microsoft.Data.SqlClient;
 
 namespace DataAccessLibrary.Repository
 {
@@ -11,7 +14,7 @@ namespace DataAccessLibrary.Repository
     {
         private readonly string _connectionString;
 
-        public TournamentRepository(IConfigurationManager configurationManager)
+        public TournamentRepository(Configuration configurationManager)
         {
             _connectionString = configurationManager.GetConnectionString("appsettings.json");
         }
@@ -84,14 +87,14 @@ namespace DataAccessLibrary.Repository
 
             while (reader.Read())
             {
-                Tournament tournament = new()
-                {
-                    Id = reader.GetInt32(0),
-                    StartDateTime = reader.GetDateTime(1),
-                    EndDateTime = reader.GetDateTime(2),
-                    ArenaId = reader.GetInt32(3),
-                    IsFinished = reader.GetBoolean(4),
-                };
+                Tournament tournament = new
+                (
+                    id : reader.GetInt32(0),
+                    startDateTime : reader.GetDateTime(1),
+                    endDateTime : reader.GetDateTime(2),
+                    arenaId : reader.GetInt32(3),
+                    isFinished : reader.GetBoolean(4)
+                );
 
                 // Retrieve fighters and matches for the tournament
                 tournament.Fighters = GetFightersForTournament(tournament.Id);
@@ -102,6 +105,52 @@ namespace DataAccessLibrary.Repository
 
             return tournaments;
         }
+
+        private List<Employee> GetFightersForTournament(int id)
+        {
+            List<Employee> fighters = new List<Employee>();
+
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+
+                // Select employee_id and employee details from EmployeesInTournament and Employee tables
+                string query = @"
+                SELECT E.employee_id, E.employee_fullName, E.employee_power, E.employee_money, E.employee_photoFilePath, E.employee_readyToFight, E.employee_account
+                FROM EmployeesInTournament AS EIT
+                INNER JOIN Employee AS E ON EIT.employee_id = E.employee_id
+                WHERE EIT.tournament_id = @tournamentId";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@tournamentId", id);
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        // Iterate through the results
+                        while (reader.Read())
+                        {
+                            // Create Employee object from the data
+                            Employee fighter = new
+                            (                            
+                                id : reader.GetInt32(0), // Assuming employee_id is the first column
+                                fullName : reader.GetString(1), // Assuming employee_fullName is the second column
+                                power : reader.GetInt32(2), // Assuming employee_power is the third column
+                                money : reader.GetInt32(3), // Assuming employee_money is the fourth column
+                                photoFilePath : reader.GetString(4), // Assuming employee_photoFilePath is the fifth column
+                                readyToFight : reader.GetBoolean(5), // Assuming employee_readyToFight is the sixth column
+                                accountId : reader.GetInt32(6)
+                            );
+                            fighters.Add(fighter);
+                        }
+                    }
+                }
+            }
+
+            return fighters;
+        }
+
+
         public Tournament? GetEntity(int entityId)
         {
             using SqlConnection connection = new(_connectionString);
@@ -119,20 +168,25 @@ namespace DataAccessLibrary.Repository
                 return null;
             }
 
-            Tournament tournament = new()
-            {
-                Id = reader.GetInt32(0),
-                StartDateTime = reader.GetDateTime(1),
-                EndDateTime = reader.GetDateTime(2),
-                ArenaId = reader.GetInt32(3),
-                IsFinished = reader.GetBoolean(4),
-            };
+            Tournament tournament = new
+            (
+                id: reader.GetInt32(0),
+                startDateTime: reader.GetDateTime(1),
+                endDateTime: reader.GetDateTime(2),
+                arenaId: reader.GetInt32(3),
+                isFinished: reader.GetBoolean(4)
+            );
 
             // Retrieve fighters and matches for the tournament
             tournament.Fighters = GetFightersForTournament(tournament.Id);
             tournament.Matches = GetMatchesForTournament(tournament.Id);
 
             return tournament;
+        }
+
+        private List<Match> GetMatchesForTournament(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }
