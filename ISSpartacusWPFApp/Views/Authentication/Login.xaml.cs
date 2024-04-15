@@ -23,5 +23,19 @@ namespace ISSpartacusWPFApp.Views.Authentication
         {
             InitializeComponent();
         }
+        private void Login_Click(object sender, RoutedEventArgs e)
+        {
+            string username = txtUsername.Text;
+            string password = txtPassword.Password;
+
+            if (!string.IsNullOrEmpty(username) && !string.IsNullOrEmpty(password))
+            {
+                txtMessage.Text = "Login successful!";
+            }
+            else
+            {
+                txtMessage.Text = "Invalid username or password!";
+            }
+        }
     }
 }
