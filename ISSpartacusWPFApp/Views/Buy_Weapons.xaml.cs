@@ -2,20 +2,32 @@
 using DataAccessLibrary.Repository;
 using ISSpartacusWPFApp.Service;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
 
 namespace ISSpartacusWPFApp.Views
 {
-    public partial class Weapons : Page
+    /// <summary>
+    /// Interaction logic for Buy_Weapons.xaml
+    /// </summary>
+    public partial class Buy_Weapons : Window
     {
-        public Weapons()
+        public Buy_Weapons()
         {
             InitializeComponent();
             DataContext = new WeaponsViewModel();
         }
-
         public class WeaponsViewModel
         {
             public ObservableCollection<Weapon> Weapons { get; set; }
@@ -52,15 +64,16 @@ namespace ISSpartacusWPFApp.Views
                 config.LoadFromJson("ConfigurationFile.json");
                 WeaponRepository repository = new WeaponRepository(config);
                 WeaponService service = new WeaponService(repository);
-                //check if the balance is enough
+                //TODO check if the balance is enough
                 //
                 selectedWeapon.Availability = false;
-                repository.zUpdateEntityByName(selectedWeapon.Name,selectedWeapon);
+                repository.zUpdateEntityByName(selectedWeapon.Name, selectedWeapon);
 
                 // Refresh the list of available weapons
                 ((WeaponsViewModel)DataContext).Weapons = new ObservableCollection<Weapon>(service.GetAvailableWeaponsService().ToList());
                 MessageBox.Show($"The weapon {selectedWeapon.Name} has been bought.", "Weapon Bought", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
-    }
+    
+}
 }
