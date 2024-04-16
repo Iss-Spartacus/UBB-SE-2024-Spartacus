@@ -3,6 +3,7 @@ using DataAccessLibrary.Repository;
 using ISSpartacusWPFApp.Service;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -48,7 +49,9 @@ namespace ISSpartacusWPFApp.Views
             MatchRepository matchRepository = new MatchRepository(config);
             MatchService matchService = new MatchService(matchRepository);
 
-            int matchId = 7;
+            int matchId = 6;
+            Trace.WriteLine(EmployeeID);
+            EmployeeID -= 1;
             MainFight fight = new MainFight(matchId, EmployeeID, matchService);
             fight.Show();
         }
