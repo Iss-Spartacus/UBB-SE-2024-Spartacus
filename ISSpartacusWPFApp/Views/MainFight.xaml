@@ -8,12 +8,12 @@
         Title="MainFight" Height="450" Width="800">
     <Grid >
         <!-- Set the background image -->
-        <Image Source="\Views\main-fight-background.jpg" Stretch="Fill"/>
+        <Image Source="https://t4.ftcdn.net/jpg/06/34/46/15/240_F_634461501_60hsVi6ickrduHxCjV3KRApdH96UYhNg.jpg" Stretch="Fill"/>
         <Image Source="\Views\Assets\main-fight-background.jpg" Stretch="Fill"/>
-        <Label x:Name="labelFirstPlayerName" Content="Player 1" HorizontalAlignment="Left" Margin="110,185,0,0" VerticalAlignment="Top" Height="32" Width="56"/>
-        <Label x:Name="labelSecondPlayerName" Content="Player 2" HorizontalAlignment="Left" Margin="621,183,0,0" VerticalAlignment="Top" Height="32" Width="56"/>
-        <Label x:Name="labelFirstPlayerLife" Content="HP:" HorizontalAlignment="Left" Margin="101,245,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="labelSecondPlayerLife" Content="HP:" HorizontalAlignment="Left" Margin="612,245,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="labelFirstPlayerName" Content="Player 1" HorizontalAlignment="Left" Margin="110,185,0,0" VerticalAlignment="Top" Height="32" Width="56" Foreground="White"/>
+        <Label x:Name="labelSecondPlayerName" Content="Player 2" HorizontalAlignment="Left" Margin="621,183,0,0" VerticalAlignment="Top" Height="32" Width="56" Foreground="White"/>
+        <Label x:Name="labelFirstPlayerLife" Content="HP:" HorizontalAlignment="Left" Margin="101,245,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label x:Name="labelSecondPlayerLife" Content="HP:" HorizontalAlignment="Left" Margin="612,245,0,0" VerticalAlignment="Top" Foreground="White"/>
 
         <!-- Rounded buttons -->
         <Button x:Name="buttonWeakHit" Content="Pumn in gura" HorizontalAlignment="Left" Margin="132,335,0,0" VerticalAlignment="Top" Height="42" Width="144" FontFamily="Showcard Gothic" FontSize="11" Foreground="#FF301805" BorderBrush="#FFE31919" Click="buttonWeakHit_Click">
@@ -44,8 +44,8 @@
             </Button.Template>
         </Button>
 
-        <Label x:Name="labelFirstPlayerPower" Content="Power Player 1" HorizontalAlignment="Left" Margin="119,42,0,0" VerticalAlignment="Top" FontFamily="Gill Sans Nova Cond Ultra Bold" FontSize="14"/>
-        <Label x:Name="labelSecondPlayerPower" Content="Power Player 2" HorizontalAlignment="Left" Margin="617,38,0,0" VerticalAlignment="Top" FontFamily="Gill Sans Nova Cond Ultra Bold" FontSize="14"/>
+        <Label x:Name="labelFirstPlayerPower" Content="Power Player 1" HorizontalAlignment="Left" Margin="119,42,0,0" VerticalAlignment="Top" FontFamily="Gill Sans Nova Cond Ultra Bold" FontSize="14" Foreground="White"/>
+        <Label x:Name="labelSecondPlayerPower" Content="Power Player 2" HorizontalAlignment="Left" Margin="617,38,0,0" VerticalAlignment="Top" FontFamily="Gill Sans Nova Cond Ultra Bold" FontSize="14" Foreground="White"/>
         <Image x:Name="imagePlayer1" HorizontalAlignment="Left" Height="214" Margin="516,98,0,0" VerticalAlignment="Top" Width="386" Source="\Views\fighter1.png" RenderTransformOrigin="0.5,0.5">
             <Image.RenderTransform>
                 <TransformGroup>
@@ -58,10 +58,10 @@
         </Image>
         <Image x:Name="imagePlayer2" HorizontalAlignment="Left" Height="225" Margin="118,84,0,0" VerticalAlignment="Top" Width="369" Source="\Views\fighter2.png"/>
         <ScrollViewer x:Name="chatScrollView" HorizontalAlignment="Left" Height="222" Margin="339,84,0,0" VerticalAlignment="Top" Width="165">
-            <ListBox x:Name="listBoxMessages" Background="Transparent" BorderThickness="0"/>
+            <ListBox x:Name="listBoxMessages" Background="Transparent" BorderThickness="0" Foreground="White"/>
         </ScrollViewer>
-        <Label x:Name="labelFirstPlayerHPValue" Content="100" HorizontalAlignment="Left" Margin="132,245,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="labelSecondPlayerHPValue" Content="100" HorizontalAlignment="Left" Margin="640,245,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="labelFirstPlayerHPValue" Content="100" HorizontalAlignment="Left" Margin="132,245,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label x:Name="labelSecondPlayerHPValue" Content="100" HorizontalAlignment="Left" Margin="640,245,0,0" VerticalAlignment="Top" Foreground="White"/>
 
     </Grid>
 </Window>
