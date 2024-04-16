@@ -102,7 +102,7 @@ namespace DataAccessLibrary.Repository
                 match.Id = reader.GetInt32(0);
 
                 // Retrieve observers for the match
-                match.Observers = GetObserversForMatch(match.Id);
+                //match.Observers = GetObserversForMatch(match.Id);
 
                 matches.Add(match);
             }
@@ -138,7 +138,7 @@ namespace DataAccessLibrary.Repository
             match.Id = reader.GetInt32(0);
 
             // Retrieve observers for the match
-            match.Observers = GetObserversForMatch(match.Id);
+            //match.Observers = GetObserversForMatch(match.Id);
 
             return match;
         }

@@ -1,4 +1,5 @@
-﻿using DataAccessLibrary.Modules;
+﻿using DataAccessLibrary.Model;
+using DataAccessLibrary.Modules;
 using DataAccessLibrary.Repository;
 using ISSpartacusWPFApp.Service;
 using System;
@@ -37,7 +38,13 @@ namespace ISSpartacusWPFApp.Views.Authentication
 
             if (result == "Success")
             {
-                OpenUserInterface(loginService.AccountType);
+                ConfigurationLoader.Configuration config = new ConfigurationLoader.Configuration();
+                config.LoadFromJson("ConfigurationFile.json");
+                AccountRepository accountRepository = new AccountRepository(config);
+                AccountService accountService = new AccountService(accountRepository);
+
+                Account account = accountService.GetAccountByEmailService(email);
+                OpenUserInterface(loginService.AccountType, account);
             }
             else
             {
@@ -45,16 +52,16 @@ namespace ISSpartacusWPFApp.Views.Authentication
             }
         }
 
-        private void OpenUserInterface(AccountType accountType)
+        private void OpenUserInterface(AccountType accountType, Account account)
         {
             if (accountType == AccountType.User)
             {
-                ISSpartacusWPFApp.Views.User userView = new User();
+                ISSpartacusWPFApp.Views.User userView = new User(account);
                 userView.Show();
             }
             else if (accountType == AccountType.Manager)
             {
-                ISSpartacusWPFApp.Views.Manager managerView = new Manager();
+                ISSpartacusWPFApp.Views.Manager managerView = new Manager(account);
                 managerView.Show();
             }
             else if (accountType == AccountType.Employee)
