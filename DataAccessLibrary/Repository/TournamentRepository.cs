@@ -89,7 +89,6 @@ namespace DataAccessLibrary.Repository
             {
                 Tournament tournament = new
                 (
-                    id : reader.GetInt32(0),
                     startDateTime : reader.GetDateTime(1),
                     endDateTime : reader.GetDateTime(2),
                     arenaId : reader.GetInt32(3),
@@ -133,7 +132,6 @@ namespace DataAccessLibrary.Repository
                             // Create Employee object from the data
                             Employee fighter = new
                             (                            
-                                id : reader.GetInt32(0), // Assuming employee_id is the first column
                                 fullName : reader.GetString(1), // Assuming employee_fullName is the second column
                                 power : reader.GetInt32(2), // Assuming employee_power is the third column
                                 money : reader.GetInt32(3), // Assuming employee_money is the fourth column
@@ -170,7 +168,6 @@ namespace DataAccessLibrary.Repository
 
             Tournament tournament = new
             (
-                id: reader.GetInt32(0),
                 startDateTime: reader.GetDateTime(1),
                 endDateTime: reader.GetDateTime(2),
                 arenaId: reader.GetInt32(3),

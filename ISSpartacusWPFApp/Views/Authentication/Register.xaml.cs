@@ -32,12 +32,12 @@ namespace ISSpartacusWPFApp.Views.Authentication
             config.LoadFromJson("ConfigurationFile.json");
             AccountRepository accountRepo = new AccountRepository(config);
 
-            string email = txtFullName.Text;
-            string username = txtUsername.Text;
+            string fullName = txtFullName.Text;
+            string email = txtUsername.Text;
             string password = txtPassword.Password;
             string confirmPassword = txtConfirmPassword.Password;
 
-            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(username) ||
+            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(fullName) ||
                 string.IsNullOrEmpty(password) || string.IsNullOrEmpty(confirmPassword))
             {
                 txtMessage.Text = "Please fill in all fields.";
@@ -58,14 +58,9 @@ namespace ISSpartacusWPFApp.Views.Authentication
                 txtMessage.Text = "Wrong email";
                 return;
             }
-            if (Validator.ValidateUsername(username))
-            {
-                txtMessage.Text = "wrong username";
-                return;
-            }
 
 
-            Account toBeAdded = new Account(email, username, password, true);
+            Account toBeAdded = new Account(email, fullName, password, true);
             accountRepo.AddEntity(toBeAdded);
             txtMessage.Text = "Successful!";
 

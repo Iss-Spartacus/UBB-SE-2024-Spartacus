@@ -98,7 +98,7 @@ namespace DataAccessLibrary.Repository
                 int price = reader.GetInt32(4);
                 bool availability = reader.GetBoolean(5);
 
-                Weapon weapon = new(id, name, power, type, price, availability);
+                Weapon weapon = new(name, power, type, price, availability);
                 weapons.Add(weapon);
             }
 
@@ -131,7 +131,7 @@ namespace DataAccessLibrary.Repository
                 int price = reader.GetInt32(4);
                 bool availability = reader.GetBoolean(5);
 
-                Weapon weapon = new Weapon(id, name, power, type, price, availability);
+                Weapon weapon = new Weapon(name, power, type, price, availability);
                 return weapon;
             }
             else
