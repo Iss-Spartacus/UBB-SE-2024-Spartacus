@@ -27,7 +27,7 @@ namespace DataAccessLibrary.Repository
             SqlCommand command = connection.CreateCommand();
             command.CommandType = CommandType.Text;
             command.CommandText = @"
-        INSERT INTO Matches (TournamentId, Employee1Id, Employee2Id, RegistrationDate, WinnerId)
+        INSERT INTO Matches (match_tournament, employee1, employee2, match_registrationDate, match_winner)
         VALUES (@TournamentId, @Employee1Id, @Employee2Id, @RegistrationDate, @WinnerId);
         SELECT SCOPE_IDENTITY();";
             command.Parameters.AddWithValue("@TournamentId", entity.TournamentId);
@@ -267,6 +267,30 @@ namespace DataAccessLibrary.Repository
                 }
             }
         }
+
+        public bool UpdateWinner(int matchId, int winnerId)
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    command.CommandType = CommandType.Text;
+                    command.CommandText = @"
+            UPDATE Matches
+            SET match_winner = @WinnerId
+            WHERE match_id = @MatchId";
+
+                    command.Parameters.AddWithValue("@WinnerId", winnerId);
+                    command.Parameters.AddWithValue("@MatchId", matchId);
+
+                    int rowsAffected = command.ExecuteNonQuery();
+                    return rowsAffected > 0; // Returns true if the update was successful
+                }
+            }
+        }
+
 
 
 

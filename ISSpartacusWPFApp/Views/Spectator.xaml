@@ -59,7 +59,6 @@
             </Image>
             <Label x:Name="labelCotaFirstPlayer" Content="Cota Player 1" HorizontalAlignment="Left" Margin="160,271,0,0" VerticalAlignment="Top" Foreground="#FFFEFEFE" FontFamily="Gill Sans Nova Cond Ultra Bold" FontSize="14"/>
             <Label x:Name="labelCotaSecondPlayer" Content="Cota Player 2" HorizontalAlignment="Left" Margin="582,271,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Gill Sans Nova Cond Ultra Bold" FontSize="14" FontWeight="Bold"/>
-            <ScrollViewer x:Name="chatScrollView" HorizontalAlignment="Left" Height="274" Margin="326,25,0,0" VerticalAlignment="Top" Width="204"/>
             <Label x:Name="labelFirstPlayerHPValue" Content="{Binding FirstPlayerHP, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="204,241,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White" FontFamily="Gill Sans Nova Cond Ultra Bold" FontWeight="Bold"/>
             <Label x:Name="labelSecondPlayerHPValue" Content="{Binding SecondPlayerHP, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="637,241,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White" FontFamily="Gill Sans Nova Cond Ultra Bold" FontWeight="Bold"/>
         </Grid>

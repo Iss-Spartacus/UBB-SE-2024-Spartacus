@@ -63,5 +63,10 @@ namespace ISSpartacusWPFApp.Service
         {
             matchRepository.FlipCurrentTurn(matchId);
         }
+
+        public void updateWinner(int matchId, int winnerId)
+        {
+            matchRepository.UpdateWinner(matchId, winnerId);
+        }
     }
 }

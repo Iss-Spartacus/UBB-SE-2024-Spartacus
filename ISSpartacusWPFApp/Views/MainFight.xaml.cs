@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -84,7 +85,7 @@ namespace ISSpartacusWPFApp.Views
             }
         }
 
-        private Match GetMatchFromDatabase(int id)
+        private DataAccessLibrary.Model.Match GetMatchFromDatabase(int id)
         {
             return matchService.GetMatchById(id);
 
@@ -98,6 +99,12 @@ namespace ISSpartacusWPFApp.Views
 
         private void buttonWeakHit_Click(object sender, RoutedEventArgs e)
         {
+            var match = GetMatchFromDatabase(matchId);
+            if (match != null)
+            {
+                var firstPlayerUsername = GetUsernameFromDatabase(match.Employee1Id);
+                var secondPlayerUsername = GetUsernameFromDatabase(match.Employee2Id);
+            }
             int damage = 10;
             Random random = new Random();
             int chance = random.Next(1, 101);
@@ -111,8 +118,9 @@ namespace ISSpartacusWPFApp.Views
             {
                 if (chance <= 80){
                     currentPlayer2HP -= damage;
-
+                    AddMessage($"{labelFirstPlayerName.Content} deals {damage} damage");
                 }
+                else AddMessage(labelFirstPlayerName.Content + " misses");
                 matchService.flipTurn(matchId);
             } else
             {
@@ -121,7 +129,9 @@ namespace ISSpartacusWPFApp.Views
                     if (chance <= 80)
                     {
                         currentPlayer1HP -= damage;
+                        AddMessage($"{labelSecondPlayerName.Content} deals {damage} damage");
                     }
+                    else AddMessage(labelSecondPlayerName.Content + " misses");
                     matchService.flipTurn(matchId);
                 }
             }
@@ -131,6 +141,12 @@ namespace ISSpartacusWPFApp.Views
 
         private void buttonMediumHit_Click(object sender, RoutedEventArgs e)
         {
+            var match = GetMatchFromDatabase(matchId);
+            if (match != null)
+            {
+                var firstPlayerUsername = GetUsernameFromDatabase(match.Employee1Id);
+                var secondPlayerUsername = GetUsernameFromDatabase(match.Employee2Id);
+            }
             int damage = 20;
             Random random = new Random();
             int chance = random.Next(1, 101);
@@ -145,8 +161,9 @@ namespace ISSpartacusWPFApp.Views
                 if (chance <= 50)
                 {
                     currentPlayer2HP -= damage;
-
+                    AddMessage($"{labelFirstPlayerName.Content} deals {damage} damage");
                 }
+                else AddMessage(labelFirstPlayerName.Content + " misses");
                 matchService.flipTurn(matchId);
             }
             else
@@ -156,7 +173,9 @@ namespace ISSpartacusWPFApp.Views
                     if (chance <= 50)
                     {
                         currentPlayer1HP -= damage;
+                        AddMessage($"{labelSecondPlayerName.Content} deals {damage} damage");
                     }
+                    else AddMessage(labelSecondPlayerName.Content + " misses");
                     matchService.flipTurn(matchId);
                 }
             }
@@ -167,6 +186,12 @@ namespace ISSpartacusWPFApp.Views
 
         private void buttonPowerfulHit_Click(object sender, RoutedEventArgs e)
         {
+            var match = GetMatchFromDatabase(matchId);
+            if (match != null)
+            {
+                var firstPlayerUsername = GetUsernameFromDatabase(match.Employee1Id);
+                var secondPlayerUsername = GetUsernameFromDatabase(match.Employee2Id);
+            }
             int damage = 30;
             Random random = new Random();
             int chance = random.Next(1, 101);
@@ -180,8 +205,9 @@ namespace ISSpartacusWPFApp.Views
                 if (chance <= 30)
                 {
                     currentPlayer2HP -= damage;
+                    AddMessage($"{labelFirstPlayerName.Content} deals {damage} damage");
 
-                }
+                } else AddMessage(labelFirstPlayerName.Content + " misses");
                 matchService.flipTurn(matchId);
             }
             else
@@ -191,14 +217,25 @@ namespace ISSpartacusWPFApp.Views
                     if (chance <= 30)
                     {
                         currentPlayer1HP -= damage;
-                    }
+                        AddMessage($"{labelSecondPlayerName.Content} deals {damage} damage");
+                    } else AddMessage(labelSecondPlayerName.Content + " misses");
+
                     matchService.flipTurn(matchId);
                 }
+
             }
             MatchState.SetHP(matchId, currentPlayer1HP, currentPlayer2HP); // Update the central state
             UpdateHP(currentPlayer1HP, currentPlayer2HP); // Update UI via event aggregator
 
         }
+
+        private void AddMessage(string message)
+        {
+            listBoxMessages.Items.Add(message);
+            listBoxMessages.ScrollIntoView(listBoxMessages.Items[listBoxMessages.Items.Count - 1]); // Scrolls to the last item
+        }
+
+
         private void UpdateHP(int player1HP, int player2HP)
         {
             EventAggregator.RaisePlayerHPChanged(new PlayerUpdateEventArgs
@@ -207,6 +244,14 @@ namespace ISSpartacusWPFApp.Views
                 Player2HP = player2HP,
                 MatchId = this.matchId
             });
+
+            if (player1HP <= 0 || player2HP <= 0)
+            {
+                string winner = player1HP <= 0 ? labelSecondPlayerName.Content.ToString() : labelFirstPlayerName.Content.ToString();
+                matchService.updateWinner(matchId, EmployeeID);
+                MessageBox.Show($"{winner} WINS!", "Game Over", MessageBoxButton.OK, MessageBoxImage.Information);
+                this.Close(); // Optionally close the fight window
+            }
         }
 
     }
