@@ -17,9 +17,8 @@ namespace DataAccessLibrary.Model
         public int AccountId { get; set; } // Foreign key reference
         public Account Account { get; set; } // Navigation property
 
-        public Employee(int id, string fullName, int power, int money, string photoFilePath, bool readyToFight, int accountId)
+        public Employee(string fullName, int power, int money, string photoFilePath, bool readyToFight, int accountId)
         {
-            Id = id;
             FullName = fullName;
             Power = power;
             Money = money;
