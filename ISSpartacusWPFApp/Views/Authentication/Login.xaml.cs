@@ -1,4 +1,7 @@
-﻿using System;
+﻿using DataAccessLibrary.Modules;
+using DataAccessLibrary.Repository;
+using ISSpartacusWPFApp.Service;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,16 +28,61 @@ namespace ISSpartacusWPFApp.Views.Authentication
         }
         private void Login_Click(object sender, RoutedEventArgs e)
         {
-            string username = txtUsername.Text;
+            string email = txtEmail.Text;
             string password = txtPassword.Password;
 
-            if (!string.IsNullOrEmpty(username) && !string.IsNullOrEmpty(password))
+            if(Validator.ValidateEmail(email) == false)
             {
-                txtMessage.Text = "Login successful!";
+                MessageBox.Show("Invalid email", "Authentication problem", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
             }
-            else
+            if(Validator.ValidatePassword(password) == false)
             {
-                txtMessage.Text = "Invalid username or password!";
+                MessageBox.Show("Invalid password", "Authentication problem", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+
+            ConfigurationLoader.Configuration config = new ConfigurationLoader.Configuration();
+            config.LoadFromJson("ConfigurationFile.json");
+            AccountRepository accountRepository = new AccountRepository(config);
+            AccountService accountService = new AccountService(accountRepository);
+
+            var accounts = accountService.GetAllEntitiesService();
+
+            bool accountWasFound = false;
+            DataAccessLibrary.Model.Account foundAccount;
+            foreach(var account in accounts)
+            {
+                if(account.Email == email && account.Password == password)
+                {
+                    accountWasFound = true;
+                    foundAccount = account;
+                }
+            }
+
+            if(accountWasFound == true)
+            {
+                AccountType accountType = AccountVerifier.VerifyAccountType(email);
+
+                if (accountType == AccountType.User)
+                {
+                    ISSpartacusWPFApp.Views.User userView = new User();
+                    userView.Show();
+                    return;
+                }
+                else if (accountType == AccountType.Manager)
+                {
+                    ISSpartacusWPFApp.Views.Manager managerView = new Manager();
+                    managerView.Show();
+                    return;
+                }
+                else if (accountType == AccountType.Employee)
+                {
+                    ISSpartacusWPFApp.Views.Employee employeeView = new Employee();
+                    employeeView.Show();
+                    return;
+                }
             }
         }
     }
