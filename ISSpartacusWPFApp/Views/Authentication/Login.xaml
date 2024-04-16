@@ -14,8 +14,8 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <Label Grid.Row="0" Content="Username:" Margin="10"/>
-        <TextBox Grid.Row="0" x:Name="txtUsername" Margin="10" VerticalAlignment="Center"/>
+        <Label Grid.Row="0" Content="Email:" Margin="10"/>
+        <TextBox Grid.Row="0" x:Name="txtEmail" Margin="10" VerticalAlignment="Center"/>
 
         <Label Grid.Row="1" Content="Password:" Margin="10" />
         <PasswordBox Grid.Row="1" x:Name="txtPassword" Margin="10" VerticalAlignment="Center"/>
