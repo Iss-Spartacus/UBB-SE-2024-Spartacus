@@ -88,7 +88,7 @@ namespace ISSpartacusWPFApp.Views
                                              employee1Id: fighterOne.Id,
                                              employee2Id: fighterTwo.Id,
                                              registrationDate: DateTime.Now,
-                                             winnerId: fighterOne.Id);
+                                             winnerId: 0);
 
                   int newMatchId = matchService.AddEntityService(newMatch);
 
