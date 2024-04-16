@@ -48,7 +48,9 @@ namespace ISSpartacusWPFApp.Views
             MatchRepository matchRepository = new MatchRepository(config);
             MatchService matchService = new MatchService(matchRepository);
 
-            int matchId = 6;
+            var currentMatch = matchService.GetOnGoingMatchService();
+
+            int matchId = currentMatch.Id;
             MainFight fight = new MainFight(matchId, EmployeeID - 1, matchService);
             fight.Show();
         }
