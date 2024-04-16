@@ -46,8 +46,8 @@
 
             <Label x:Name="labelFirstPlayerPower" Content="Power Player 1" HorizontalAlignment="Left" Margin="155,214,0,0" VerticalAlignment="Top" Foreground="White" FontSize="14" FontWeight="Bold" FontFamily="Gill Sans Nova Cond Ultra Bold"/>
             <Label x:Name="labelSecondPlayerPower" Content="Power Player 2" HorizontalAlignment="Left" Margin="575,212,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Gill Sans Nova Cond Ultra Bold" FontSize="14" FontWeight="Bold"/>
-            <Image x:Name="imageSecondPlayer" HorizontalAlignment="Left" Height="237" Margin="91,0,0,0" VerticalAlignment="Top" Width="329" Source="/Views/player2-icon.png"/>
-            <Image x:Name="imageFirstPlayer" HorizontalAlignment="Left" Height="231" Margin="503,-13,0,0" VerticalAlignment="Top" Width="301" Source="/Views/player1-icon.png" RenderTransformOrigin="0.5,0.5">
+            <Image x:Name="imageSecondPlayer" HorizontalAlignment="Left" Height="162" Margin="124,25,0,0" VerticalAlignment="Top" Width="263" Source="https://cdn-icons-png.flaticon.com/512/3863/3863608.png"/>
+            <Image x:Name="imageFirstPlayer" HorizontalAlignment="Left" Height="168" Margin="538,15,0,0" VerticalAlignment="Top" Width="241" Source="https://cdn-icons-png.freepik.com/512/6288/6288777.png" RenderTransformOrigin="0.5,0.5" OpacityMask="#FFB49090">
                 <Image.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
