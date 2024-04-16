@@ -23,15 +23,13 @@
                 <RowDefinition Height="Auto" MinHeight="48.62"/>
                 <RowDefinition Height="Auto" MinHeight="0"/>
                 <RowDefinition Height="Auto" MinHeight="35.96"/>
-                <RowDefinition Height="Auto" MinHeight="22"/>
-                <RowDefinition Height="Auto" MinHeight="30"/>
             </Grid.RowDefinitions>
 
 
             <!-- Username Label and TextBox -->
-            <Label Grid.Row="0" Content="Email:" Margin="226,-12,107,31" FontFamily="Segoe UI Black" FontSize="16" Foreground="#FF522200" Grid.ColumnSpan="4"/>
-            <TextBox x:Name="txtEmail" VerticalAlignment="Top" HorizontalAlignment="Left" Width="156" Padding="5" FontFamily="Gill Sans Nova Ultra Bold" Height="28" Margin="322,-9,0,0" Background="#99FC6024" Grid.ColumnSpan="4" BorderBrush="#BA63240B"/>
-
+            <Label Grid.Row="0" Content="Username:" Margin="226,-12,107,31" FontFamily="Segoe UI Black" FontSize="16" Foreground="#FF522200" Grid.ColumnSpan="4"/>
+            <TextBox x:Name="txtUsername" VerticalAlignment="Top" HorizontalAlignment="Left" Width="156" Padding="5" FontFamily="Gill Sans Nova Ultra Bold" Height="28" Margin="322,-9,0,0" Background="#99FC6024" Grid.ColumnSpan="4" BorderBrush="#BA63240B"/>
+            <Image Source="https://seeklogo.com/images/S/spartacus-logo-159F299D9D-seeklogo.com.png" Stretch="Fill" Grid.ColumnSpan="4" Margin="226,-131,130,105"/>
             <!-- Password Label and PasswordBox -->
             <Label Content="Password:" Margin="226,40,146,32" FontFamily="Segoe UI Black" FontSize="16" Foreground="#FF562605" Grid.RowSpan="2" Grid.ColumnSpan="4"/>
             <PasswordBox x:Name="txtPassword" VerticalAlignment="Top" HorizontalAlignment="Left" Width="154" Padding="5" FontFamily="Gill Sans Nova Ultra Bold" Height="28" Margin="323,43,0,0" Grid.RowSpan="2" Grid.ColumnSpan="4" Background="#99FC6024" BorderBrush="#BA63240B"/>
@@ -50,20 +48,6 @@
                     </ControlTemplate>
                 </Button.Template>
             </Button>
-            <Button Grid.Row="5" Content="Register now" Margin="289,21,161,-6" Grid.ColumnSpan="4" FontSize="12" Padding="8,4" Background="#FF7844" BorderBrush="#FF522200" Foreground="#FF522200" Click="Register_From_Login_Button">
-                <Button.Template>
-                    <ControlTemplate TargetType="Button">
-                        <Border Background="{TemplateBinding Background}"
-                    BorderBrush="{TemplateBinding BorderBrush}"
-                    BorderThickness="1"
-                    CornerRadius="10">
-                            <!-- Adjust the CornerRadius value to change the roundness of corners -->
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        </Border>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button>
-
             <TextBlock Grid.Row="3" x:Name="txtMessage" Margin="10,10,10,10" Foreground="Red" Grid.ColumnSpan="5"/>
         </Grid>
     </Grid>
