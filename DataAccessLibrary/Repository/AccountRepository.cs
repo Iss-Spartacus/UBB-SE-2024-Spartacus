@@ -94,6 +94,7 @@ namespace DataAccessLibrary.Repository
                     password: reader.GetString(3),
                     isAdult: reader.GetBoolean(4)
                 );
+                account.Id = reader.GetInt32(0);
 
                 accounts.Add(account);
             }

@@ -173,6 +173,7 @@ namespace DataAccessLibrary.Repository
                 arenaId: reader.GetInt32(3),
                 isFinished: reader.GetBoolean(4)
             );
+            tournament.Id = reader.GetInt32(0);
 
             // Retrieve fighters and matches for the tournament
             tournament.Fighters = GetFightersForTournament(tournament.Id);

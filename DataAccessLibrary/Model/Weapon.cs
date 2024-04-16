@@ -15,7 +15,7 @@ namespace DataAccessLibrary.Model
         public int Price { get; set; }
         public bool Availability { get; set; }
 
-        public Weapon(string name, int power, string type, int price, bool availability)
+        public Weapon(string name, int power, string type, int price, bool availability) {
             Name = name;
             Power = power;
             Type = type;

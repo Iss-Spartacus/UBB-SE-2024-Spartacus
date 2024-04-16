@@ -83,10 +83,10 @@ namespace DataAccessLibrary.Repository
             {
                 Manager manager = new
                 (
-                    id : reader.GetInt32(0),
                     name : reader.GetString(1),
                     accountId : reader.GetInt32(2)
                 );
+                manager.Id = reader.GetInt32(0);
 
                 managers.Add(manager);
             }
@@ -112,10 +112,10 @@ namespace DataAccessLibrary.Repository
 
             Manager manager = new
             (
-                id: reader.GetInt32(0),
                 name: reader.GetString(1),
                 accountId: reader.GetInt32(2)
             );
+            manager.Id = reader.GetInt32(0);
 
             return manager;
         }

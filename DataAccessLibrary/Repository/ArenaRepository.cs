@@ -85,6 +85,7 @@ namespace DataAccessLibrary.Repository
                     capacity: reader.GetInt32(1),
                     location: reader.GetString(2)
                 );
+                arena.Id = reader.GetInt32(0);
 
                 arenas.Add(arena);
             }

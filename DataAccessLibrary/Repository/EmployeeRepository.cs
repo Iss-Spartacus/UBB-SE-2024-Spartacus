@@ -95,7 +95,6 @@ namespace DataAccessLibrary.Repository
             {
                 Employee employee = new
                 (
-                    id : reader.GetInt32(0),
                     fullName: reader.GetString(1),
                     power: reader.GetInt32(2),
                     money: reader.GetInt32(3),
@@ -103,6 +102,7 @@ namespace DataAccessLibrary.Repository
                     readyToFight: reader.GetBoolean(5),
                     accountId: reader.GetInt32(6)
                 );
+                employee.Id = reader.GetInt32(0);
 
                 employees.Add(employee);
             }
@@ -128,7 +128,6 @@ namespace DataAccessLibrary.Repository
 
             Employee employee = new
             (
-                id: reader.GetInt32(0),
                 fullName: reader.GetString(1),
                 power: reader.GetInt32(2),
                 money: reader.GetInt32(3),
@@ -136,6 +135,7 @@ namespace DataAccessLibrary.Repository
                 readyToFight: reader.GetBoolean(5),
                 accountId: reader.GetInt32(6)
             );
+            employee.Id = reader.GetInt32(0);
 
             return employee;
         }

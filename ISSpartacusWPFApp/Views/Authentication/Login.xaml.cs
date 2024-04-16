@@ -84,6 +84,10 @@ namespace ISSpartacusWPFApp.Views.Authentication
                     return;
                 }
             }
+            else
+            {
+                MessageBox.Show("Invalid email and password combination", "Authentication problem", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

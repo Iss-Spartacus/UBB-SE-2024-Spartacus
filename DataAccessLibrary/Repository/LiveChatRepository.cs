@@ -86,11 +86,11 @@ namespace DataAccessLibrary.Repository
             {
                 LiveChat liveChat = new
                 (
-                    id : reader.GetInt32(0),
                     matchId : reader.GetInt32(1),
                     content : reader.GetString(2),
                     timeStamp : reader.GetDateTime(3)
                 );
+                liveChat.Id = reader.GetInt32(0);
 
                 liveChats.Add(liveChat);
             }
@@ -116,7 +116,6 @@ namespace DataAccessLibrary.Repository
 
             LiveChat liveChat = new
             (
-                id: reader.GetInt32(0),
                 matchId: reader.GetInt32(1),
                 content: reader.GetString(2),
                 timeStamp: reader.GetDateTime(3)

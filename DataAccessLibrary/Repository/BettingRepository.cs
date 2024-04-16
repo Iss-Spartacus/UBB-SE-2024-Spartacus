@@ -93,13 +93,13 @@ namespace DataAccessLibrary.Repository
             {
                 Betting betting = new
                 (
-                    id : reader.GetInt32(0),
                     accountId : reader.GetInt32(1),
                     amount : reader.GetFloat(2),
                     betOnId : reader.GetInt32(3),
                     initialOdd : reader.GetInt32(4),
                     matchId : reader.GetInt32(5)
                 );
+                betting.Id = reader.GetInt32(0);
 
                 bettings.Add(betting);
             }
@@ -125,7 +125,6 @@ namespace DataAccessLibrary.Repository
 
             Betting betting = new
             (
-                id: reader.GetInt32(0),
                 accountId: reader.GetInt32(1),
                 amount: reader.GetFloat(2),
                 betOnId: reader.GetInt32(3),

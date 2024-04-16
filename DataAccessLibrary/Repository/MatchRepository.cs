@@ -93,13 +93,13 @@ namespace DataAccessLibrary.Repository
             {
                 Match match = new
                 (
-                    id : reader.GetInt32(0),
                     tournamentId : reader.GetInt32(1),
                     employee1Id : reader.GetInt32(2),
                     employee2Id : reader.GetInt32(3),
                     registrationDate : reader.GetDateTime(4),
                     winnerId : reader.GetInt32(5)
                 );
+                match.Id = reader.GetInt32(0);
 
                 // Retrieve observers for the match
                 match.Observers = GetObserversForMatch(match.Id);
@@ -128,13 +128,14 @@ namespace DataAccessLibrary.Repository
 
             Match match = new
             (
-                id: reader.GetInt32(0),
                 tournamentId: reader.GetInt32(1),
                 employee1Id: reader.GetInt32(2),
                 employee2Id: reader.GetInt32(3),
                 registrationDate: reader.GetDateTime(4),
                 winnerId: reader.GetInt32(5)
             );
+
+            match.Id = reader.GetInt32(0);
 
             // Retrieve observers for the match
             match.Observers = GetObserversForMatch(match.Id);

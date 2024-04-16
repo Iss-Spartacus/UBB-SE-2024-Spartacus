@@ -83,10 +83,10 @@ namespace DataAccessLibrary.Repository
             {
                 User user = new
                 (
-                    id : reader.GetInt32(0),
                     userName : reader.GetString(1),
                     accountId : reader.GetInt32(2)
                 );
+                user.Id = reader.GetInt32(0);
 
                 users.Add(user);
             }
