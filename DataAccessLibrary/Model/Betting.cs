@@ -18,9 +18,8 @@ namespace DataAccessLibrary.Model
         public int MatchId { get; set; } // Foreign key reference
         public Match Match { get; set; } // Navigation property
 
-        public Betting(int id, int accountId, float amount, int betOnId, int initialOdd, int matchId)
-        {
-            Id = id;
+        public Betting(int accountId, float amount, int betOnId, int initialOdd, int matchId)
+        {            
             AccountId = accountId;
             Amount = amount;
             BetOnId = betOnId;

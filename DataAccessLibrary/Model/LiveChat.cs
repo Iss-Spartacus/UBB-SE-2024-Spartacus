@@ -14,9 +14,8 @@ namespace DataAccessLibrary.Model
         public string Content { get; set; }
         public DateTime TimeStamp { get; set; }
 
-        public LiveChat(int id, int matchId, string content, DateTime timeStamp)
-        {
-            Id = id;
+        public LiveChat(int matchId, string content, DateTime timeStamp)
+        {         
             MatchId = matchId;
             Content = content;
             TimeStamp = timeStamp;
