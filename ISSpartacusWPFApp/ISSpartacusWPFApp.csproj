@@ -22,4 +22,13 @@
     <Resource Include="Views\geacnoris.jpg" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Views\Assets\background-login.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\Assets\swords-login.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

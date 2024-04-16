@@ -8,7 +8,7 @@
         Title="Login" Height="450" Width="800">
     <Grid>
         <!-- Background Image -->
-        <Image Source="Views\Assets\background-login.jpg" Stretch="Fill"/>
+        <Image Source="..\Assets\background-login.jpg" Stretch="Fill"/>
 
         <Grid Margin="0,149,0,0">
             <Grid.ColumnDefinitions>
