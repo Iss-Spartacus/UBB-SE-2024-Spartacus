@@ -8,24 +8,58 @@
         Title="Spectator" Height="450" Width="800">
     <Grid>
         <Grid>
-            <Label x:Name="labelFirstPlayerName" Content="Player 1" HorizontalAlignment="Left" Margin="38,185,0,0" VerticalAlignment="Top" Height="32" Width="200"/>
-            <Label x:Name="labelSecondPlayerName" Content="Player 2" HorizontalAlignment="Left" Margin="549,183,0,0" VerticalAlignment="Top" Height="32" Width="128"/>
-            <Label x:Name="labelFirstPlayerLife" Content="Life Player 1" HorizontalAlignment="Left" Margin="38,245,0,0" VerticalAlignment="Top" Width="200"/>
-            <Label x:Name="labelSecondPlayerLife" Content="Life Player 2" HorizontalAlignment="Left" Margin="549,245,0,0" VerticalAlignment="Top" Width="137"/>
-            <Button x:Name="betOnFirstPlayerButton" Content="Bet" HorizontalAlignment="Left" Margin="233,378,0,0" VerticalAlignment="Top" Height="32" Width="55" Click="betOnFirstPlayerButton_Click"/>
 
-            <Button x:Name="betOnSecondPlayerButton" Content="Bet" HorizontalAlignment="Left" Margin="502,378,0,0" VerticalAlignment="Top" Height="32" Width="55" Click="betOnSecondPlayerButton_Click"/>
-            <Label x:Name="labelFirstPlayerPower" Content="Power Player 1" HorizontalAlignment="Left" Margin="38,217,0,0" VerticalAlignment="Top" Width="200"/>
-            <Label x:Name="labelSecondPlayerPower" Content="Power Player 2" HorizontalAlignment="Left" Margin="549,212,0,0" VerticalAlignment="Top" Width="143"/>
-            <Image x:Name="imageSecondPlayer" HorizontalAlignment="Left" Height="153" Margin="38,22,0,0" VerticalAlignment="Top" Width="200" Source="/Views/geacnoris.jpg"/>
-            <Image x:Name="imageFirstPlayer" HorizontalAlignment="Left" Height="156" Margin="549,22,0,0" VerticalAlignment="Top" Width="200" Source="/Views/brusli.jpg"/>
-            <Label x:Name="labelFirstPlayerOdd" Content="Cota Player 1" HorizontalAlignment="Left" Margin="38,299,0,0" VerticalAlignment="Top" Width="200"/>
-            <Label x:Name="labelSecondPlayerOdd" Content="Cota Player 2" HorizontalAlignment="Left" Margin="609,299,0,0" VerticalAlignment="Top"/>
-            <ScrollViewer x:Name="chatScrollView" HorizontalAlignment="Center" Height="274" Margin="0,22,0,0" VerticalAlignment="Top" Width="204"/>
+            <Image Source="https://t4.ftcdn.net/jpg/04/13/36/33/240_F_413363323_jnnN8cFUss7vxC714VRXECiLTlQd0era.jpg" Stretch="Fill" Margin="5,0,-5,0"/>
+            <Label x:Name="labelFirstPlayerName" Content="Player 1" HorizontalAlignment="Left" Margin="171,185,0,0" VerticalAlignment="Top" Height="32" Width="67" Foreground="#FFFEFEFE" FontFamily="Gill Sans Nova Cond Ultra Bold" FontSize="14" FontWeight="Bold"/>
+            <Label x:Name="labelSecondPlayerName" Content="Player 2" HorizontalAlignment="Left" Margin="591,183,0,0" VerticalAlignment="Top" Height="32" Width="70" Foreground="White" FontSize="14" FontWeight="Bold" FontFamily="Gill Sans Nova Cond Ultra Bold"/>
+            <Label x:Name="labelFirstPlayerLife" Content="Life Player 1" HorizontalAlignment="Left" Margin="162,242,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White" FontFamily="Gill Sans Nova Cond Ultra Bold" FontWeight="Bold"/>
+            <Label x:Name="labelSecondPlayerLife" Content="Life Player 2" HorizontalAlignment="Left" Margin="591,241,0,0" VerticalAlignment="Top" Foreground="#FFFAFAFA" FontFamily="Gill Sans Nova Cond Ultra Bold" FontSize="14" FontWeight="Bold"/>
+            <Button x:Name="buttonPariuFirstPlayer" HorizontalAlignment="Left" Margin="117,330,0,0" VerticalAlignment="Top" Height="50" Width="175">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Grid Margin="1,-24,0,0">
+                            <!-- Background Image -->
+                            <Image Source="https://www.fanatik.ro/wp-content/thumbnails/ZeuoG3pihqqWwGqykMOnogBOTyg=/728x0/smart/filters:contrast(5):format(webp):quality(80)/wp-content/uploads/2022/06/1000-lei-romanesti.jpg" Stretch="Fill" Margin="0,0,-17,-15" />
 
-            <Label x:Name="betAmountLabel" Content="Bet Amount:" HorizontalAlignment="Left" Margin="348,347,0,0" VerticalAlignment="Top"/>
-            <TextBox x:Name="betAmountTextBox" HorizontalAlignment="Center" VerticalAlignment="Top"
-                 Width="104" Height="30" Margin="0,378,0,0" PreviewTextInput="NumericTextBox_PreviewTextInput"/>
+                            <!-- Content Presenter -->
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Grid>
+                    </ControlTemplate>
+                </Button.Template>
+                <!-- Button Content -->
+            </Button>
+
+            <Button x:Name="buttonPariuSecondPlayer" HorizontalAlignment="Left" Margin="538,330,0,0" VerticalAlignment="Top" Height="69" Width="192">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <!-- Background Image -->
+                            <Image Source="https://www.fanatik.ro/wp-content/thumbnails/ZeuoG3pihqqWwGqykMOnogBOTyg=/728x0/smart/filters:contrast(5):format(webp):quality(80)/wp-content/uploads/2022/06/1000-lei-romanesti.jpg" Stretch="Fill" Margin="0,-23,0,0" />
+
+                            <!-- Content Presenter -->
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Grid>
+                    </ControlTemplate>
+                </Button.Template>
+                <!-- Button Content -->
+            </Button>
+
+            <Label x:Name="labelFirstPlayerPower" Content="Power Player 1" HorizontalAlignment="Left" Margin="155,214,0,0" VerticalAlignment="Top" Foreground="White" FontSize="14" FontWeight="Bold" FontFamily="Gill Sans Nova Cond Ultra Bold"/>
+            <Label x:Name="labelSecondPlayerPower" Content="Power Player 2" HorizontalAlignment="Left" Margin="575,212,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Gill Sans Nova Cond Ultra Bold" FontSize="14" FontWeight="Bold"/>
+            <Image x:Name="imageSecondPlayer" HorizontalAlignment="Left" Height="237" Margin="91,0,0,0" VerticalAlignment="Top" Width="329" Source="/Views/player2-icon.png"/>
+            <Image x:Name="imageFirstPlayer" HorizontalAlignment="Left" Height="231" Margin="503,-13,0,0" VerticalAlignment="Top" Width="301" Source="/Views/player1-icon.png" RenderTransformOrigin="0.5,0.5">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="0.047"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+            <Label x:Name="labelCotaFirstPlayer" Content="Cota Player 1" HorizontalAlignment="Left" Margin="160,271,0,0" VerticalAlignment="Top" Foreground="#FFFEFEFE" FontFamily="Gill Sans Nova Cond Ultra Bold" FontSize="14"/>
+            <Label x:Name="labelCotaSecondPlayer" Content="Cota Player 2" HorizontalAlignment="Left" Margin="582,271,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Gill Sans Nova Cond Ultra Bold" FontSize="14" FontWeight="Bold"/>
+            <ScrollViewer x:Name="chatScrollView" HorizontalAlignment="Left" Height="274" Margin="326,25,0,0" VerticalAlignment="Top" Width="204"/>
         </Grid>
     </Grid>
 </Window>
