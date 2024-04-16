@@ -24,12 +24,11 @@ namespace ISSpartacusWPFApp.Views
             InitializeComponent();
         }
 
-        private void selectEmployeeButton_Click(object sender, RoutedEventArgs e)
+        private void spectateButton_Click(object sender, RoutedEventArgs e)
         {
             //TODO
         }
-
-        private void betOnPlayerButton_Click(object sender, RoutedEventArgs e)
+        private void selectEmployeeButton_Click(object sender, RoutedEventArgs e)
         {
             //TODO
         }
