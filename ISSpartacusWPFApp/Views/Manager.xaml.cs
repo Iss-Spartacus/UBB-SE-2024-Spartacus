@@ -26,7 +26,8 @@ namespace ISSpartacusWPFApp.Views
 
         private void spectateButton_Click(object sender, RoutedEventArgs e)
         {
-            //TODO
+            Spectator spectatorWindow = new Spectator();
+            spectatorWindow.Show();
         }
         private void selectEmployeeButton_Click(object sender, RoutedEventArgs e)
         {
