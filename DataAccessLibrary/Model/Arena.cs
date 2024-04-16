@@ -13,6 +13,7 @@ namespace DataAccessLibrary.Model
         public string Location { get; set; }
 
         public Arena(int capacity, string location)
+        { 
             Capacity = capacity;
             Location = location;
         }

@@ -82,7 +82,6 @@ namespace DataAccessLibrary.Repository
             while (reader.Read())
             {
                 Arena arena = new Arena(
-                    id: reader.GetInt32(0),
                     capacity: reader.GetInt32(1),
                     location: reader.GetString(2)
                 );
@@ -111,7 +110,6 @@ namespace DataAccessLibrary.Repository
 
             Arena arena = new
             (
-                id: reader.GetInt32(0),
                 capacity: reader.GetInt32(1),
                 location: reader.GetString(2)
             );
