@@ -48,11 +48,11 @@ namespace ISSpartacusWPFApp.Views
             labelSecondPlayerName.Content = secondFighter.FullName;
             labelFirstPlayerLife.Content = "100HP";
             labelSecondPlayerLife.Content = "100HP";
-            labelFirstPlayerPower.Content = firstFighter.Power;
-            labelSecondPlayerPower.Content = secondFighter.Power;
+            labelFirstPlayerPower.Content = $"{ firstFighter.Power } POWER";
+            labelSecondPlayerPower.Content = $"{secondFighter.Power} POWER";
 
-            labelFirstPlayerOdd.Content = "1.25";
-            labelSecondPlayerOdd.Content = "1.25";
+            labelCotaFirstPlayer.Content = "1.25";
+            labelCotaSecondPlayer.Content = "1.25";
         }
 
         private void betOnFirstPlayerButton_Click(object sender, RoutedEventArgs e)

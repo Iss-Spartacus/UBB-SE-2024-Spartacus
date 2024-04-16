@@ -23,11 +23,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Views\Assets\background-login.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <None Update="Views\player1-icon.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
-    <None Update="Views\Assets\swords-login.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <None Update="Views\player2-icon.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 
