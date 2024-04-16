@@ -2,10 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\DataAccessLibrary",
-    "\\DataAccessLibrary\\Model",
-    "\\DataAccessLibrary\\Repository",
-    "\\ISSpartacusWPFApp"
+    "\\ISSpartacusWPFApp",
+    "\\ISSpartacusWPFApp\\Views"
   ],
-  "SelectedNode": "\\DataAccessLibrary\\Repository\\WeaponRepository.cs",
+  "SelectedNode": "\\ISSpartacusWPFApp\\ISSpartacusWPFApp.sln",
   "PreviewInSolutionExplorer": false
 }
