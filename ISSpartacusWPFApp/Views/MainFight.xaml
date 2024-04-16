@@ -8,14 +8,15 @@
         Title="MainFight" Height="450" Width="800">
     <Grid >
         <!-- Set the background image -->
-        <Image Source="https://t4.ftcdn.net/jpg/06/34/46/15/240_F_634461501_60hsVi6ickrduHxCjV3KRApdH96UYhNg.jpg" Stretch="Fill"/>
-        <Label x:Name="labelFirstPlayerName" Content="Player 1" HorizontalAlignment="Left" Margin="119,10,0,0" VerticalAlignment="Top" Height="32" Width="74" FontFamily="Gill Sans Nova Cond Ultra Bold" FontSize="14" FontWeight="Bold"/>
-        <Label x:Name="labelSecondPlayerName" Content="Player 2" HorizontalAlignment="Left" Margin="617,10,0,0" VerticalAlignment="Top" Height="32" Width="70" FontFamily="Gill Sans Nova Cond Ultra Bold" FontSize="14"/>
-        <Label x:Name="labelFirstPlayerLife" Content="Life Player 1" HorizontalAlignment="Left" Margin="118,70,0,0" VerticalAlignment="Top" FontFamily="Gill Sans Nova Cond Ultra Bold" FontSize="14"/>
-        <Label x:Name="labelSecondPlayerLife" Content="Life Player 2" HorizontalAlignment="Left" Margin="617,66,0,0" VerticalAlignment="Top" FontFamily="Gill Sans Nova Cond Ultra Bold" FontSize="14"/>
+        <Image Source="\Views\main-fight-background.jpg" Stretch="Fill"/>
+        <Image Source="\Views\Assets\main-fight-background.jpg" Stretch="Fill"/>
+        <Label x:Name="labelFirstPlayerName" Content="Player 1" HorizontalAlignment="Left" Margin="110,185,0,0" VerticalAlignment="Top" Height="32" Width="56"/>
+        <Label x:Name="labelSecondPlayerName" Content="Player 2" HorizontalAlignment="Left" Margin="621,183,0,0" VerticalAlignment="Top" Height="32" Width="56"/>
+        <Label x:Name="labelFirstPlayerLife" Content="HP:" HorizontalAlignment="Left" Margin="101,245,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="labelSecondPlayerLife" Content="HP:" HorizontalAlignment="Left" Margin="612,245,0,0" VerticalAlignment="Top"/>
 
         <!-- Rounded buttons -->
-        <Button x:Name="buttonWeakHit" Content="Pumn in gura" HorizontalAlignment="Left" Margin="132,335,0,0" VerticalAlignment="Top" Height="42" Width="144" FontFamily="Showcard Gothic" FontSize="11" Foreground="#FF301805" BorderBrush="#FFE31919">
+        <Button x:Name="buttonWeakHit" Content="Pumn in gura" HorizontalAlignment="Left" Margin="132,335,0,0" VerticalAlignment="Top" Height="42" Width="144" FontFamily="Showcard Gothic" FontSize="11" Foreground="#FF301805" BorderBrush="#FFE31919" Click="buttonWeakHit_Click">
             <Button.Template>
                 <ControlTemplate TargetType="Button">
                     <Border Background="#A64942" BorderBrush="#FFA64942" BorderThickness="1" CornerRadius="20">
@@ -24,7 +25,7 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button x:Name="buttonMediumHit" Content="Picior in cap" HorizontalAlignment="Left" Margin="317,335,0,0" VerticalAlignment="Top" Height="42" Width="149" FontFamily="Showcard Gothic" Background="#FF27109A" Foreground="#FF34335C" FontSize="11">
+        <Button x:Name="buttonMediumHit" Content="Picior in cap" HorizontalAlignment="Left" Margin="317,335,0,0" VerticalAlignment="Top" Height="42" Width="149" FontFamily="Showcard Gothic" Background="#FF27109A" Foreground="#FF34335C" FontSize="11" Click="buttonMediumHit_Click">
             <Button.Template>
                 <ControlTemplate TargetType="Button">
                     <Border Background="#50727B" BorderBrush="#FFA64942" BorderThickness="1" CornerRadius="20">
@@ -33,7 +34,7 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button x:Name="buttonPowerfulHit" Content="Perversa de pe Tg. Ocna" HorizontalAlignment="Left" Margin="510,335,0,0" VerticalAlignment="Top" Height="42" Width="149" BorderBrush="#FF903B12" Background="Gold" FontFamily="Showcard Gothic" FontSize="10" Foreground="#FFCA3E3E">
+        <Button x:Name="buttonPowerfulHit" Content="Perversa de pe Tg. Ocna" HorizontalAlignment="Left" Margin="510,335,0,0" VerticalAlignment="Top" Height="42" Width="149" BorderBrush="#FF903B12" Background="Gold" FontFamily="Showcard Gothic" FontSize="10" Foreground="#FFCA3E3E" Click="buttonPowerfulHit_Click">
             <Button.Template>
                 <ControlTemplate TargetType="Button">
                     <Border Background="#FFD700" BorderBrush="#FFA64942" BorderThickness="1" CornerRadius="20">
@@ -45,7 +46,7 @@
 
         <Label x:Name="labelFirstPlayerPower" Content="Power Player 1" HorizontalAlignment="Left" Margin="119,42,0,0" VerticalAlignment="Top" FontFamily="Gill Sans Nova Cond Ultra Bold" FontSize="14"/>
         <Label x:Name="labelSecondPlayerPower" Content="Power Player 2" HorizontalAlignment="Left" Margin="617,38,0,0" VerticalAlignment="Top" FontFamily="Gill Sans Nova Cond Ultra Bold" FontSize="14"/>
-        <Image x:Name="imagePlayer1" HorizontalAlignment="Left" Height="189" Margin="126,108,0,0" VerticalAlignment="Top" Width="366" Source="https://t3.ftcdn.net/jpg/05/68/33/62/240_F_568336212_mYctdeKKDXiSzAvdHbmQonFfgtkP6DA5.jpg" RenderTransformOrigin="0.5,0.5">
+        <Image x:Name="imagePlayer1" HorizontalAlignment="Left" Height="214" Margin="516,98,0,0" VerticalAlignment="Top" Width="386" Source="\Views\fighter1.png" RenderTransformOrigin="0.5,0.5">
             <Image.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform ScaleX="-1"/>
@@ -55,8 +56,12 @@
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
-        <Image x:Name="imagePlayer2" HorizontalAlignment="Left" Height="178" Margin="562,106,0,0" VerticalAlignment="Top" Width="326" Source="https://t3.ftcdn.net/jpg/06/37/19/90/240_F_637199063_XADadTnFMB0L16jIhXhHhMwdui946PoY.jpg"/>
-        <ScrollViewer x:Name="chatScrollView" HorizontalAlignment="Left" Height="222" Margin="339,84,0,0" VerticalAlignment="Top" Width="165"/>
+        <Image x:Name="imagePlayer2" HorizontalAlignment="Left" Height="225" Margin="118,84,0,0" VerticalAlignment="Top" Width="369" Source="\Views\fighter2.png"/>
+        <ScrollViewer x:Name="chatScrollView" HorizontalAlignment="Left" Height="222" Margin="339,84,0,0" VerticalAlignment="Top" Width="165">
+            <ListBox x:Name="listBoxMessages" Background="Transparent" BorderThickness="0"/>
+        </ScrollViewer>
+        <Label x:Name="labelFirstPlayerHPValue" Content="100" HorizontalAlignment="Left" Margin="132,245,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="labelSecondPlayerHPValue" Content="100" HorizontalAlignment="Left" Margin="640,245,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>
