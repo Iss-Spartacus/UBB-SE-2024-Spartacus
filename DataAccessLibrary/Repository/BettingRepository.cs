@@ -93,7 +93,7 @@ namespace DataAccessLibrary.Repository
             {
                 Betting betting = new
                 (
-                    id : reader.GetInt32(0),
+                    
                     accountId : reader.GetInt32(1),
                     amount : reader.GetFloat(2),
                     betOnId : reader.GetInt32(3),

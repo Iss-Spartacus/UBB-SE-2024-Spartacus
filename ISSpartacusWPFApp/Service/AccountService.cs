@@ -24,6 +24,7 @@ namespace ISSpartacusWPFApp.Service
             if (!Validator.ValidatePassword(entity.Password))
                 throw new Exception("Password is not valid!");
 
+            //TODO
             return accountRepository.AddEntity(entity);
         }
 
