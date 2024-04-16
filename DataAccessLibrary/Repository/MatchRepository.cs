@@ -97,7 +97,8 @@ namespace DataAccessLibrary.Repository
                     employee1Id : reader.GetInt32(2),
                     employee2Id : reader.GetInt32(3),
                     registrationDate : reader.GetDateTime(4),
-                    winnerId : reader.GetInt32(5)
+                    winnerId : reader.GetInt32(5),
+                    matchEmployee2Turn: reader.GetBoolean(6)
                 );
                 match.Id = reader.GetInt32(0);
 
@@ -116,7 +117,7 @@ namespace DataAccessLibrary.Repository
 
             SqlCommand command = connection.CreateCommand();
             command.CommandType = CommandType.Text;
-            command.CommandText = "SELECT * FROM Matches WHERE Id = @entityId";
+            command.CommandText = "SELECT * FROM Matches WHERE match_id = @entityId";
             command.Parameters.AddWithValue("@entityId", entityId);
 
             SqlDataReader reader = command.ExecuteReader();
@@ -132,7 +133,8 @@ namespace DataAccessLibrary.Repository
                 employee1Id: reader.GetInt32(2),
                 employee2Id: reader.GetInt32(3),
                 registrationDate: reader.GetDateTime(4),
-                winnerId: reader.GetInt32(5)
+                winnerId: reader.GetInt32(5),
+                matchEmployee2Turn: reader.GetBoolean(6)
             );
 
             match.Id = reader.GetInt32(0);
@@ -143,10 +145,43 @@ namespace DataAccessLibrary.Repository
             return match;
         }
 
-        private List<MatchObserver> GetObserversForMatch(int id)
+        private List<MatchObserver> GetObserversForMatch(int matchId)
         {
-            throw new NotImplementedException();
+            using SqlConnection connection = new(_connectionString);
+            connection.Open();
+
+            SqlCommand command = connection.CreateCommand();
+            command.CommandType = CommandType.Text;
+            command.CommandText = @"
+        SELECT UserId, MatchId
+        FROM MatchObservers
+        WHERE MatchId = @MatchId";
+            command.Parameters.AddWithValue("@MatchId", matchId);
+
+            List<MatchObserver> observers = new List<MatchObserver>();
+
+            try
+            {
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        int userId = reader.GetInt32(reader.GetOrdinal("UserId"));
+                        // MatchId is not necessary to read since it's the same for all rows in this context
+                        MatchObserver observer = new MatchObserver(userId, matchId);
+                        observers.Add(observer);
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                // Log exception or handle it according to your error handling policy
+                Console.WriteLine("An error occurred while retrieving match observers: " + ex.Message);
+            }
+
+            return observers;
         }
+
 
         public void AddObserver(int matchId, MatchObserver observer)
         {
@@ -177,5 +212,65 @@ namespace DataAccessLibrary.Repository
 
             command.ExecuteNonQuery();
         }
+
+        public string GetEmployeeFullName(int employeeId)
+        {
+            using SqlConnection connection = new(_connectionString);
+            connection.Open();
+
+            SqlCommand command = connection.CreateCommand();
+            command.CommandType = CommandType.Text;
+            command.CommandText = "SELECT employee_fullName FROM Employee WHERE employee_id = @employeeId";
+            command.Parameters.AddWithValue("@employeeId", employeeId);
+
+            string fullName = command.ExecuteScalar() as string;
+
+            return fullName ?? string.Empty;
+        }
+
+        public bool GetCurrentTurn(int matchId)
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    command.CommandType = CommandType.Text;
+                    command.CommandText = "SELECT match_employee2Turn FROM Matches WHERE match_id = @MatchId";
+                    command.Parameters.AddWithValue("@MatchId", matchId);
+
+                    return (bool)command.ExecuteScalar();
+                }
+            }
+        }
+
+        public bool FlipCurrentTurn(int matchId)
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+
+                // First, get the current value of match_employee2Turn
+                bool currentTurn = GetCurrentTurn(matchId);
+
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    command.CommandType = CommandType.Text;
+                    command.CommandText = @"
+                UPDATE Matches
+                SET match_employee2Turn = @NewTurn
+                WHERE match_id = @MatchId";
+                    command.Parameters.AddWithValue("@NewTurn", !currentTurn); // Flip the boolean value
+                    command.Parameters.AddWithValue("@MatchId", matchId);
+
+                    int rowsAffected = command.ExecuteNonQuery();
+                    return rowsAffected > 0; // Return true if the update was successful
+                }
+            }
+        }
+
+
+
     }
 }

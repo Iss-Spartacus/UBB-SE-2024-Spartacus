@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DataAccessLibrary.Model;
+using ISSpartacusWPFApp.Service;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +21,193 @@ namespace ISSpartacusWPFApp.Views
     /// </summary>
     public partial class MainFight : Window
     {
-        public MainFight()
+        private readonly int matchId;
+        private readonly int EmployeeID;
+        private bool isPlayer1 = false;
+        private int player1HP = 100;
+        private int player2HP = 100;
+
+        private readonly MatchService matchService;
+
+        public MainFight(int matchId, int EmployeeID, MatchService matchService)
         {
             InitializeComponent();
+            this.matchService = matchService;
+            this.matchId = matchId;
+            this.EmployeeID = EmployeeID;
+            LoadPlayerNames();
+            checkPlayer1();
+
+            EventAggregator.OnPlayerHPChanged += OnPlayerHPChangedHandler;
         }
+
+        private void OnPlayerHPChangedHandler(PlayerUpdateEventArgs args)
+        {
+            // Update the UI elements only if the event is for this match
+            if (this.matchId == args.MatchId)
+            {
+                Dispatcher.Invoke(() =>
+                {
+                    labelFirstPlayerHPValue.Content = args.Player1HP;
+                    labelSecondPlayerHPValue.Content = args.Player2HP;
+                });
+            }
+        }
+
+        protected override void OnClosed(EventArgs e)
+        {
+            base.OnClosed(e);
+            EventAggregator.OnPlayerHPChanged -= OnPlayerHPChangedHandler; // Unsubscribe to prevent memory leaks
+        }
+
+
+        private void checkPlayer1() {
+            var match = GetMatchFromDatabase(matchId);
+            if (EmployeeID == match.Employee1Id)
+            {
+                isPlayer1 = true;
+            }
+            
+        }
+
+
+        private void LoadPlayerNames()
+        {
+            var match = GetMatchFromDatabase(matchId);
+            if (match != null)
+            {
+                var firstPlayerUsername = GetUsernameFromDatabase(match.Employee1Id);
+                var secondPlayerUsername = GetUsernameFromDatabase(match.Employee2Id);
+
+                labelFirstPlayerName.Content = firstPlayerUsername;
+                labelSecondPlayerName.Content = secondPlayerUsername;
+            }
+        }
+
+        private Match GetMatchFromDatabase(int id)
+        {
+            return matchService.GetMatchById(id);
+
+        }
+
+        private string GetUsernameFromDatabase(int employeeId)
+        {
+            return matchService.GetEmployeeFullNameForMatch(employeeId);
+        }
+
+
+        private void buttonWeakHit_Click(object sender, RoutedEventArgs e)
+        {
+            int damage = 10;
+            Random random = new Random();
+            int chance = random.Next(1, 101);
+
+            var (currentPlayer1HP, currentPlayer2HP) = MatchState.GetHP(matchId);
+
+
+            bool player2turn = matchService.getTurn(matchId);
+
+            if (isPlayer1 && !player2turn)
+            {
+                if (chance <= 80){
+                    currentPlayer2HP -= damage;
+
+                }
+                matchService.flipTurn(matchId);
+            } else
+            {
+                if (!isPlayer1 && player2turn)
+                {
+                    if (chance <= 80)
+                    {
+                        currentPlayer1HP -= damage;
+                    }
+                    matchService.flipTurn(matchId);
+                }
+            }
+            MatchState.SetHP(matchId, currentPlayer1HP, currentPlayer2HP); // Update the central state
+            UpdateHP(currentPlayer1HP, currentPlayer2HP); // Update UI via event aggregator
+        }
+
+        private void buttonMediumHit_Click(object sender, RoutedEventArgs e)
+        {
+            int damage = 20;
+            Random random = new Random();
+            int chance = random.Next(1, 101);
+
+            var (currentPlayer1HP, currentPlayer2HP) = MatchState.GetHP(matchId);
+
+
+            bool player2turn = matchService.getTurn(matchId);
+
+            if (isPlayer1 && !player2turn)
+            {
+                if (chance <= 50)
+                {
+                    currentPlayer2HP -= damage;
+
+                }
+                matchService.flipTurn(matchId);
+            }
+            else
+            {
+                if (!isPlayer1 && player2turn)
+                {
+                    if (chance <= 50)
+                    {
+                        currentPlayer1HP -= damage;
+                    }
+                    matchService.flipTurn(matchId);
+                }
+            }
+            MatchState.SetHP(matchId, currentPlayer1HP, currentPlayer2HP); // Update the central state
+            UpdateHP(currentPlayer1HP, currentPlayer2HP); // Update UI via event aggregator
+
+        }
+
+        private void buttonPowerfulHit_Click(object sender, RoutedEventArgs e)
+        {
+            int damage = 30;
+            Random random = new Random();
+            int chance = random.Next(1, 101);
+            var (currentPlayer1HP, currentPlayer2HP) = MatchState.GetHP(matchId);
+
+
+            bool player2turn = matchService.getTurn(matchId);
+
+            if (isPlayer1 && !player2turn)
+            {
+                if (chance <= 30)
+                {
+                    currentPlayer2HP -= damage;
+
+                }
+                matchService.flipTurn(matchId);
+            }
+            else
+            {
+                if (!isPlayer1 && player2turn)
+                {
+                    if (chance <= 30)
+                    {
+                        currentPlayer1HP -= damage;
+                    }
+                    matchService.flipTurn(matchId);
+                }
+            }
+            MatchState.SetHP(matchId, currentPlayer1HP, currentPlayer2HP); // Update the central state
+            UpdateHP(currentPlayer1HP, currentPlayer2HP); // Update UI via event aggregator
+
+        }
+        private void UpdateHP(int player1HP, int player2HP)
+        {
+            EventAggregator.RaisePlayerHPChanged(new PlayerUpdateEventArgs
+            {
+                Player1HP = player1HP,
+                Player2HP = player2HP,
+                MatchId = this.matchId
+            });
+        }
+
     }
 }

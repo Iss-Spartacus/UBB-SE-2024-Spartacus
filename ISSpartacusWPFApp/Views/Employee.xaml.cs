@@ -1,4 +1,7 @@
-﻿using System;
+﻿using ConfigurationLoader;
+using DataAccessLibrary.Repository;
+using ISSpartacusWPFApp.Service;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +22,11 @@ namespace ISSpartacusWPFApp.Views
     /// </summary>
     public partial class Employee : Window
     {
-        public Employee()
+        public int EmployeeID { get; set; }
+        public Employee(int employeeID)
         {
             InitializeComponent();
+            EmployeeID = employeeID;    
         }
 
 
@@ -38,7 +43,13 @@ namespace ISSpartacusWPFApp.Views
         private void Play_Button_Click(object sender, RoutedEventArgs e)
         {
             //TODO if to check the employee is really in a fight
-            MainFight fight = new MainFight();
+            Configuration config = new Configuration();
+            config.LoadFromJson("ConfigurationFile.json");
+            MatchRepository matchRepository = new MatchRepository(config);
+            MatchService matchService = new MatchService(matchRepository);
+
+            int matchId = 7;
+            MainFight fight = new MainFight(matchId, EmployeeID, matchService);
             fight.Show();
         }
     }

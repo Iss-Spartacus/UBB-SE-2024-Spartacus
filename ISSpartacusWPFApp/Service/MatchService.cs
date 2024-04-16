@@ -6,9 +6,9 @@ namespace ISSpartacusWPFApp.Service
 {
     public class MatchService : IService<Match>
     {
-        private readonly IRepository<Match> matchRepository;
+        private readonly MatchRepository matchRepository;
 
-        public MatchService(IRepository<Match> matchRepository)
+        public MatchService(MatchRepository matchRepository)
         {
             this.matchRepository = matchRepository;
         }
@@ -36,6 +36,26 @@ namespace ISSpartacusWPFApp.Service
         public bool UpdateEntityService(int id, Match entity)
         {
             return matchRepository.UpdateEntity(id, entity);
+        }
+
+        public Match GetMatchById(int matchId)
+        {
+            return matchRepository.GetEntity(matchId);
+        }
+
+        public string GetEmployeeFullNameForMatch(int employeeId)
+        {
+            return matchRepository.GetEmployeeFullName(employeeId);
+        }
+
+        public bool getTurn(int matchId)
+        {
+            return matchRepository.GetCurrentTurn(matchId);
+        }
+
+        public void flipTurn(int matchId)
+        {
+            matchRepository.FlipCurrentTurn(matchId);
         }
     }
 }

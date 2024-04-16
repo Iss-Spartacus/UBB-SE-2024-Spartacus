@@ -11,6 +11,7 @@ namespace ISSpartacusWPFApp.Service
     public class LoginService
     {
         public AccountType AccountType { get; private set; }
+        public int AccountId { get; private set; }
 
         public string ValidateLogin(string email, string password)
         {
@@ -33,6 +34,7 @@ namespace ISSpartacusWPFApp.Service
                 if (account.Email == email && account.Password == password)
                 {
                     AccountType = AccountVerifier.VerifyAccountType(email);
+                    AccountId = account.Id;
                     return "Success";
                 }
             }
