@@ -14,7 +14,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using DataAccessLibrary.Modules;
 namespace ISSpartacusWPFApp.Views.Authentication
 {
     /// <summary>
@@ -43,10 +43,24 @@ namespace ISSpartacusWPFApp.Views.Authentication
                 txtMessage.Text = "Please fill in all fields.";
                 return;
             }
-
-            if (password != confirmPassword)
+            if (Validator.ValidatePassword(password)!= true)
+            {
+                txtMessage.Text = "Wrong idea of password(it needs to have a character and a number)";
+                return;
+            }
+            if (Validator.ComparePasswords(password,confirmPassword)!=true)
             {
                 txtMessage.Text = "Passwords do not match.";
+                return;
+            }
+            if (Validator.ValidateEmail(email) != true)
+            {
+                txtMessage.Text = "Wrong email";
+                return;
+            }
+            if (Validator.ValidateUsername(username))
+            {
+                txtMessage.Text = "wrong username";
                 return;
             }
 
