@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <Folder Include="DBQuery\" />
+    <Folder Include="Repository\Interfaces\" />
   </ItemGroup>
 
   <ItemGroup>
