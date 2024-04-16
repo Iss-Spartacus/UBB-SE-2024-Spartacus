@@ -1,6 +1,7 @@
 ﻿using DataAccessLibrary.Modules;
 using DataAccessLibrary.Repository;
 using ISSpartacusWPFApp.Service;
+using Microsoft.Identity.Client;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,7 +38,7 @@ namespace ISSpartacusWPFApp.Views.Authentication
 
             if (result == "Success")
             {
-                OpenUserInterface(loginService.AccountType);
+                OpenUserInterface(loginService.AccountType, loginService.AccountId);
             }
             else
             {
@@ -45,7 +46,7 @@ namespace ISSpartacusWPFApp.Views.Authentication
             }
         }
 
-        private void OpenUserInterface(AccountType accountType)
+        private void OpenUserInterface(AccountType accountType, int accountId)
         {
             if (accountType == AccountType.User)
             {
@@ -59,7 +60,7 @@ namespace ISSpartacusWPFApp.Views.Authentication
             }
             else if (accountType == AccountType.Employee)
             {
-                ISSpartacusWPFApp.Views.Employee employeeView = new Employee();
+                ISSpartacusWPFApp.Views.Employee employeeView = new Employee(accountId);
                 employeeView.Show();
             }
         }
