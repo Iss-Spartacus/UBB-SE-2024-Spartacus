@@ -7,20 +7,48 @@
         mc:Ignorable="d"
         Title="Login" Height="450" Width="800">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
+        <!-- Background Image -->
+        <Image Source="Views\Assets\background-login.jpg" Stretch="Fill"/>
 
-        <Label Grid.Row="0" Content="Username:" Margin="10"/>
-        <TextBox Grid.Row="0" x:Name="txtUsername" Margin="10" VerticalAlignment="Center"/>
+        <Grid Margin="0,149,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="332*"/>
+                <ColumnDefinition Width="9*"/>
+                <ColumnDefinition Width="125*"/>
+                <ColumnDefinition Width="206*"/>
+                <ColumnDefinition Width="128*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" MinHeight="48.62"/>
+                <RowDefinition Height="Auto" MinHeight="48.62"/>
+                <RowDefinition Height="Auto" MinHeight="0"/>
+                <RowDefinition Height="Auto" MinHeight="35.96"/>
+            </Grid.RowDefinitions>
 
-        <Label Grid.Row="1" Content="Password:" Margin="10" />
-        <PasswordBox Grid.Row="1" x:Name="txtPassword" Margin="10" VerticalAlignment="Center"/>
 
-        <Button Grid.Row="2" Content="Login" Margin="10" Click="Login_Click"/>
-        <TextBlock Grid.Row="3" x:Name="txtMessage" Margin="10" Foreground="Red"/>
+            <!-- Username Label and TextBox -->
+            <Label Grid.Row="0" Content="Username:" Margin="226,-12,107,31" FontFamily="Segoe UI Black" FontSize="16" Foreground="#FF522200" Grid.ColumnSpan="4"/>
+            <TextBox x:Name="txtUsername" VerticalAlignment="Top" HorizontalAlignment="Left" Width="156" Padding="5" FontFamily="Gill Sans Nova Ultra Bold" Height="28" Margin="322,-9,0,0" Background="#99FC6024" Grid.ColumnSpan="4" BorderBrush="#BA63240B"/>
+
+            <!-- Password Label and PasswordBox -->
+            <Label Content="Password:" Margin="226,40,146,32" FontFamily="Segoe UI Black" FontSize="16" Foreground="#FF562605" Grid.RowSpan="2" Grid.ColumnSpan="4"/>
+            <PasswordBox x:Name="txtPassword" VerticalAlignment="Top" HorizontalAlignment="Left" Width="154" Padding="5" FontFamily="Gill Sans Nova Ultra Bold" Height="28" Margin="323,43,0,0" Grid.RowSpan="2" Grid.ColumnSpan="4" Background="#99FC6024" BorderBrush="#BA63240B"/>
+
+            <!-- Rounded Button -->
+            <Button Grid.Row="3" Content="LOGIN" Margin="289,18,161,-40" Click="Login_Click" Background="#FFFF7844" BorderBrush="#FFA64942" FontFamily="Segoe UI Black" FontSize="16" Foreground="#FF522200" Grid.ColumnSpan="4">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="1"
+                                CornerRadius="20">
+                            <!-- Adjust the CornerRadius value to change the roundness of corners -->
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <TextBlock Grid.Row="3" x:Name="txtMessage" Margin="10,10,10,10" Foreground="Red" Grid.ColumnSpan="5"/>
+        </Grid>
     </Grid>
 </Window>
