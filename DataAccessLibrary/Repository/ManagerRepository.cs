@@ -26,7 +26,7 @@ namespace DataAccessLibrary.Repository
             SqlCommand command = connection.CreateCommand();
             command.CommandType = CommandType.Text;
             command.CommandText = @"
-        INSERT INTO Managers (Name, AccountId)
+        INSERT INTO Manager (Name, AccountId)
         VALUES (@Name, @AccountId);
         SELECT SCOPE_IDENTITY();";
             command.Parameters.AddWithValue("@Name", entity.Name);
@@ -42,7 +42,7 @@ namespace DataAccessLibrary.Repository
 
             SqlCommand command = connection.CreateCommand();
             command.CommandType = CommandType.Text;
-            command.CommandText = "DELETE FROM Managers WHERE Managers.id = @id";
+            command.CommandText = "DELETE FROM Manager WHERE Manager.id = @id";
             command.Parameters.AddWithValue("@id", id);
 
             int rowsAffected = command.ExecuteNonQuery();
@@ -56,7 +56,7 @@ namespace DataAccessLibrary.Repository
             SqlCommand command = connection.CreateCommand();
             command.CommandType = CommandType.Text;
             command.CommandText = @"
-        UPDATE Managers
+        UPDATE Manager
         SET Name = @Name,
             AccountId = @AccountId
         WHERE id = @Id";
@@ -74,7 +74,7 @@ namespace DataAccessLibrary.Repository
 
             SqlCommand command = connection.CreateCommand();
             command.CommandType = CommandType.Text;
-            command.CommandText = "SELECT * FROM Managers";
+            command.CommandText = "SELECT * FROM Manager";
 
             SqlDataReader reader = command.ExecuteReader();
             List<Manager> managers = new List<Manager>();
@@ -100,7 +100,7 @@ namespace DataAccessLibrary.Repository
 
             SqlCommand command = connection.CreateCommand();
             command.CommandType = CommandType.Text;
-            command.CommandText = "SELECT * FROM Managers WHERE Id = @entityId";
+            command.CommandText = "SELECT * FROM Manager WHERE Id = @entityId";
             command.Parameters.AddWithValue("@entityId", entityId);
 
             SqlDataReader reader = command.ExecuteReader();

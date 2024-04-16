@@ -1,4 +1,7 @@
-﻿using System;
+﻿using ConfigurationLoader;
+using DataAccessLibrary.Model;
+using DataAccessLibrary.Repository;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,12 +28,16 @@ namespace ISSpartacusWPFApp.Views.Authentication
         }
         private void Register_Click(object sender, RoutedEventArgs e)
         {
-            string fullName = txtFullName.Text;
+            Configuration config = new Configuration();
+            config.LoadFromJson("ConfigurationFile.json");
+            AccountRepository accountRepo = new AccountRepository(config);
+
+            string email = txtFullName.Text;
             string username = txtUsername.Text;
             string password = txtPassword.Password;
             string confirmPassword = txtConfirmPassword.Password;
 
-            if (string.IsNullOrEmpty(fullName) || string.IsNullOrEmpty(username) ||
+            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(username) ||
                 string.IsNullOrEmpty(password) || string.IsNullOrEmpty(confirmPassword))
             {
                 txtMessage.Text = "Please fill in all fields.";
@@ -43,7 +50,11 @@ namespace ISSpartacusWPFApp.Views.Authentication
                 return;
             }
 
-            txtMessage.Text = "Registration successful!";
+
+            Account toBeAdded = new Account(email, username, password, true);
+            accountRepo.AddEntity(toBeAdded);
+            txtMessage.Text = "Successful!";
+
         }
     }
 }

@@ -14,10 +14,9 @@ namespace DataAccessLibrary.Repository
     public class WeaponRepository : IRepository<Weapon>
     {
         private readonly string _connectionString;
-
         public WeaponRepository(Configuration configurationManager)
         {
-            _connectionString = configurationManager.GetConnectionString("appsettings.json");
+            _connectionString = configurationManager.GetConnectionString("connectionSpartacus");
         }
         public int AddEntity(Weapon entity)
         {
