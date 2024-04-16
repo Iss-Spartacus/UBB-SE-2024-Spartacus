@@ -37,5 +37,9 @@ namespace ISSpartacusWPFApp.Service
         {
             return weaponRepository.UpdateEntity(id, entity);
         }
+        public IEnumerable<Weapon> GetAvailableWeaponsService()
+        {
+            return weaponRepository.GetAllEntities().Where(weapon => weapon.Availability);
+        }
     }
 }

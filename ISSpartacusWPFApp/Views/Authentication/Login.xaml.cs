@@ -2,6 +2,7 @@
 using DataAccessLibrary.Modules;
 using DataAccessLibrary.Repository;
 using ISSpartacusWPFApp.Service;
+using Microsoft.Identity.Client;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -66,10 +67,16 @@ namespace ISSpartacusWPFApp.Views.Authentication
             }
             else if (accountType == AccountType.Employee)
             {
-                ISSpartacusWPFApp.Views.Employee employeeView = new Employee();
+                ISSpartacusWPFApp.Views.Employee employeeView = new Employee(account.Id);
                 employeeView.Show();
             }
         }
 
+        private void Register_From_Login_Button(object sender, RoutedEventArgs e)
+        {
+            Register newRegistration = new Register();
+            newRegistration.Show();
+            this.Close();
+        }
     }
 }

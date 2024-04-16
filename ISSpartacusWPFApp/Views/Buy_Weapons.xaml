@@ -1,0 +1,23 @@
+﻿<Window x:Class="ISSpartacusWPFApp.Views.Buy_Weapons"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ISSpartacusWPFApp.Views"
+        mc:Ignorable="d"
+        Title="Buy_Weapons" Height="450" Width="800">
+    <Grid Background="Red">
+        <ListView x:Name="listViewWeapons" ItemsSource="{Binding Weapons}" SelectionChanged="ListView_SelectionChanged">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" />
+                    <GridViewColumn Header="Power" DisplayMemberBinding="{Binding Power}" />
+                    <GridViewColumn Header="Type" DisplayMemberBinding="{Binding Type}" />
+                    <GridViewColumn Header="Price" DisplayMemberBinding="{Binding Price}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button Content="Buy Weapon" HorizontalAlignment="Left" Margin="487,322,0,0" VerticalAlignment="Top" Height="86" Width="137" Click="Button_Click" FontWeight="Bold"/>
+        <TextBlock HorizontalAlignment="Left" Margin="400,121,0,0" TextWrapping="Wrap" Text="Balance" VerticalAlignment="Top" Height="68" Width="324" FontSize="30"/>
+    </Grid>
+</Window>

@@ -17,6 +17,7 @@ namespace DataAccessLibrary.Model
         public Employee Employee2 { get; set; } // Navigation property
         public DateTime RegistrationDate { get; set; }
         public int WinnerId { get; set; } // Foreign key reference
+        public bool MatchEmployee2Turn { get; set; }
         public Employee Winner { get; set; } // Navigation property
         public List<MatchObserver> Observers { get; set; } = new List<MatchObserver>();
 

@@ -23,6 +23,8 @@
                 <RowDefinition Height="Auto" MinHeight="48.62"/>
                 <RowDefinition Height="Auto" MinHeight="0"/>
                 <RowDefinition Height="Auto" MinHeight="35.96"/>
+                <RowDefinition Height="Auto" MinHeight="22"/>
+                <RowDefinition Height="Auto" MinHeight="30"/>
             </Grid.RowDefinitions>
 
 
@@ -42,6 +44,19 @@
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="1"
                                 CornerRadius="20">
+                            <!-- Adjust the CornerRadius value to change the roundness of corners -->
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button Grid.Row="5" Content="Register now" Margin="289,10,161,20" Grid.ColumnSpan="4" FontSize="12" Padding="8,4" Background="#FFAABBCC" BorderBrush="#FF8899AA" Foreground="#FF112233" Click="Register_From_Login_Button">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="1"
+                                CornerRadius="10">
                             <!-- Adjust the CornerRadius value to change the roundness of corners -->
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
