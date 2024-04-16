@@ -51,7 +51,7 @@ namespace ISSpartacusWPFApp.Views
             var currentMatch = matchService.GetOnGoingMatchService();
 
             int matchId = currentMatch.Id;
-            MainFight fight = new MainFight(matchId, EmployeeID - 1, matchService);
+            MainFight fight = new MainFight(matchId, EmployeeID, matchService);
             fight.Show();
         }
 

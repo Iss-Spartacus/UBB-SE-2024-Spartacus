@@ -2,6 +2,7 @@
 using ISSpartacusWPFApp.Service;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -23,7 +24,7 @@ namespace ISSpartacusWPFApp.Views
     public partial class MainFight : Window
     {
         private readonly int matchId;
-        private readonly int EmployeeID;
+        private int EmployeeID;
         private bool isPlayer1 = false;
         private int player1HP = 100;
         private int player2HP = 100;
@@ -37,7 +38,9 @@ namespace ISSpartacusWPFApp.Views
             this.matchId = matchId;
             this.EmployeeID = EmployeeID;
             LoadPlayerNames();
+            updateTheId();
             checkPlayer1();
+
 
             EventAggregator.OnPlayerHPChanged += OnPlayerHPChangedHandler;
         }
@@ -83,6 +86,13 @@ namespace ISSpartacusWPFApp.Views
                 labelFirstPlayerName.Content = firstPlayerUsername;
                 labelSecondPlayerName.Content = secondPlayerUsername;
             }
+        }
+
+        private void updateTheId()
+        {
+            Trace.WriteLine(EmployeeID);
+            EmployeeID = matchService.accountIdFromEmployeeId(EmployeeID);
+            Trace.WriteLine(EmployeeID);
         }
 
         private DataAccessLibrary.Model.Match GetMatchFromDatabase(int id)

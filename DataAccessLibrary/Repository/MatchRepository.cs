@@ -291,6 +291,31 @@ namespace DataAccessLibrary.Repository
             }
         }
 
+        public int GetEmployeeAccount(int employeeId)
+        {
+            using (SqlConnection connection = new(_connectionString))
+            {
+                connection.Open();
+
+                SqlCommand command = connection.CreateCommand();
+                command.CommandType = CommandType.Text;
+                command.CommandText = "SELECT employee_id FROM Employee WHERE employee_account = @employeeId";
+                command.Parameters.AddWithValue("@employeeId", employeeId);
+
+                object result = command.ExecuteScalar();
+
+                if (result != null && result != DBNull.Value)
+                {
+                    return (int)result;
+                }
+                else
+                {
+                    throw new InvalidOperationException("Employee not found or account not set.");
+                }
+            }
+        }
+
+
 
 
 

@@ -68,5 +68,10 @@ namespace ISSpartacusWPFApp.Service
         {
             matchRepository.UpdateWinner(matchId, winnerId);
         }
+
+        public int accountIdFromEmployeeId(int employeeId)
+        {
+            return matchRepository.GetEmployeeAccount(employeeId);
+        }
     }
 }
