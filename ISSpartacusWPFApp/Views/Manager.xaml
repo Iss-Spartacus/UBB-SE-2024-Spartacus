@@ -7,12 +7,28 @@
         mc:Ignorable="d"
         Title="Manager" Height="450" Width="800">
     <Grid>
-        <TextBlock HorizontalAlignment="Left" Height="28" Margin="10,71,0,0" TextWrapping="Wrap" Text="Balance:" VerticalAlignment="Top" Width="84" FontSize="20"/>
-        <TextBlock x:Name="balance" HorizontalAlignment="Left" Height="28" Margin="99,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="73" FontSize="20"/>
-        <Rectangle HorizontalAlignment="Left" Height="222" Margin="19,165,0,0" Stroke="Black" VerticalAlignment="Top" Width="245"/>
-        <Button x:Name="selectEmployeeButton" Content="Select Employee" HorizontalAlignment="Left" Height="23" Margin="55,311,0,0" VerticalAlignment="Top" Width="173" Click="selectEmployeeButton_Click"/>
-        <Button x:Name="spectateButton" Content="Spectate Fight" HorizontalAlignment="Left" Height="23" Margin="55,230,0,0" VerticalAlignment="Top" Width="173" Click="spectateButton_Click"/>
-        <Rectangle HorizontalAlignment="Left" Height="34" Margin="19,165,0,0" Stroke="Black" VerticalAlignment="Top" Width="245"/>
-        <TextBlock HorizontalAlignment="Left" Height="34" Margin="105,165,0,0" TextWrapping="Wrap" Text="Options" VerticalAlignment="Top" Width="73" FontSize="20"/>
+        <Image Source="https://t4.ftcdn.net/jpg/05/70/08/39/240_F_570083974_9PJMeBySI8O5hV7yaDEg8q0Yxgt09KBn.jpg"
+               Stretch="UniformToFill" Opacity="1"/>
+
+        <!-- Manager Title -->
+        <TextBlock Text="Manager" FontSize="50" Foreground="#A64942" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0" Opacity="0.7" FontFamily="Stencil"/>
+
+        <!-- Main Content -->
+        <Grid Background="Transparent" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel>
+                <!-- Balance -->
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
+                    <TextBlock Text="Balance: " FontSize="25" Foreground="#A64942" FontFamily="Stencil"/>
+                    <TextBlock Text="1500" FontSize="25" Foreground="#A64942" FontFamily="Stencil"/>
+                </StackPanel>
+
+                <!-- Buttons -->
+                <StackPanel>
+                    <Button Content="Select Employee" Width="220" Background="#A64942" Foreground="#FF53354A" Margin="0,0,0,10" FontSize="18" FontFamily="Bernard MT Condensed"/>
+                    <Button Content="Bet on a Player" Width="220" Background="#A64942" Foreground="#FF53354A" Margin="0,0,0,10" FontFamily="Bernard MT Condensed" FontSize="18"/>
+                    <Button Content="Take Bribe" Width="220" Background="#A64942" Foreground="#FF53354A" Margin="0,0,0,10" FontFamily="Bernard MT Condensed" FontSize="18"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>

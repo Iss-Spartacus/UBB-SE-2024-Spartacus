@@ -6,14 +6,24 @@
         xmlns:local="clr-namespace:ISSpartacusWPFApp.Views.Authentication"
         mc:Ignorable="d"
         Title="Register" Height="450" Width="800">
-    <Grid>
+    <Grid HorizontalAlignment="Center" Width="800">
+        <Grid.Background>
+            <ImageBrush ImageSource="https://t4.ftcdn.net/jpg/06/34/46/15/240_F_634461501_60hsVi6ickrduHxCjV3KRApdH96UYhNg.jpg" Stretch="UniformToFill"/>
+        </Grid.Background>
+
+        <Grid.Resources>
+            <Style TargetType="TextBlock">
+                <Setter Property="Foreground" Value="#1B1F3A"/>
+                <Setter Property="FontSize" Value="14"/>
+            </Style>
+        </Grid.Resources>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" MinHeight="46.59"/>
+            <RowDefinition Height="Auto" MinHeight="46.59"/>
+            <RowDefinition Height="Auto" MinHeight="41.28"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -21,21 +31,20 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Label Grid.Row="0" Grid.Column="0" Content="Full Name:" Margin="10"/>
-        <TextBox Grid.Row="0" Grid.Column="1" x:Name="txtFullName" Margin="10" VerticalAlignment="Center"/>
+        <Label Grid.Row="0" Grid.Column="0" Content="Full Name:" Margin="10,12,10,8" FontFamily="Stencil" FontSize="14" Foreground="#FFFF7844"/>
+        <TextBox Grid.Column="1" x:Name="txtFullName" Margin="10,0,10,0" VerticalAlignment="Center" Height="18"/>
 
-        <Label Grid.Row="1" Grid.Column="0" Content="Email:" Margin="10"/>
-        <TextBox Grid.Row="1" Grid.Column="1" x:Name="txtUsername" Margin="10" VerticalAlignment="Center"/>
+        <Label Grid.Row="1" Grid.Column="0" Content="Email:" Margin="10,12,10,8" FontFamily="Stencil" FontSize="14" Foreground="#FFFF7844"/>
+        <TextBox Grid.Row="1" Grid.Column="1" x:Name="txtUsername" Margin="10,16,10,0" VerticalAlignment="Top" Height="18"/>
 
-        <Label Grid.Row="2" Grid.Column="0" Content="Password:" Margin="10"/>
-        <PasswordBox Grid.Row="2" Grid.Column="1" x:Name="txtPassword" Margin="10" VerticalAlignment="Center"/>
+        <Label Grid.Row="2" Grid.Column="0" Content="Password:" Margin="10,12,10,8" FontFamily="Stencil" FontSize="14" Foreground="#FFFF7844"/>
+        <PasswordBox Grid.Row="2" Grid.Column="1" x:Name="txtPassword" Margin="10,0,10,0" VerticalAlignment="Center" Height="18"/>
 
-        <Label Grid.Row="3" Grid.Column="0" Content="Confirm Password:" Margin="10"/>
-        <PasswordBox Grid.Row="3" Grid.Column="1" x:Name="txtConfirmPassword" Margin="10" VerticalAlignment="Center"/>
-
-        <Button Grid.Row="5" Grid.Column="1" Content="Register" Margin="10,11,10,5" Click="Register_Click"/>
-        <TextBlock Grid.Row="5" Grid.Column="1" x:Name="txtMessage" Margin="10" Foreground="Red"/>
-        <Label x:Name="ageLabel" Grid.Row="4" Grid.Column="0" Content="Over 18?" Margin="10,7,10,7"/>
-        <CheckBox x:Name="ageCheckBox" Grid.Column="1" Content="Adult?" HorizontalAlignment="Left" Margin="10,8,0,0" Grid.Row="4" VerticalAlignment="Top"/>
+        <Label Grid.Row="3" Grid.Column="0" Content="Confirm Password:" Margin="10,12,10,8" FontFamily="Stencil" FontSize="14" Foreground="#FFFF7844"/>
+        <PasswordBox Grid.Row="3" Grid.Column="1" x:Name="txtConfirmPassword" Margin="10,0,10,0" VerticalAlignment="Center" Height="18"/>
+        <Button Grid.Row="5" Grid.Column="1" Content="REGISTER" Margin="168,31,200,-15" Click="Register_Click" FontFamily="Segoe UI Black" Foreground="#FFFF7844" FontSize="16"/>
+        <TextBlock Grid.Row="5" Grid.Column="1" x:Name="txtMessage" Margin="168,63,201,-43" FontFamily="Gill Sans Ultra Bold" />
+        <Label x:Name="ageLabel" Grid.Row="4" Grid.Column="0" Content="Over 18?" Margin="10,12,10,8" FontFamily="Stencil" Foreground="#FFFF7844" FontSize="14"/>
+        <CheckBox x:Name="ageCheckBox" Grid.Column="1" Content="Adult?" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="4" VerticalAlignment="Center" FontFamily="Stencil" Foreground="#FFFF7844" Height="15" Width="64"/>
     </Grid>
 </Window>

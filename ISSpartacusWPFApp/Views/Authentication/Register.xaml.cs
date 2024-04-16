@@ -65,5 +65,10 @@ namespace ISSpartacusWPFApp.Views.Authentication
             txtMessage.Text = "Successful!";
 
         }
+
+        private void ageCheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

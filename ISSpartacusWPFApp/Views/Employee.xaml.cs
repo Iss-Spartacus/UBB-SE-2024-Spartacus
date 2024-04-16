@@ -30,5 +30,9 @@ namespace ISSpartacusWPFApp.Views
             //TODO
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
