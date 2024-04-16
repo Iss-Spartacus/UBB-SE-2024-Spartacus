@@ -8,11 +8,11 @@
         Title="MainFight" Height="450" Width="800">
     <Grid >
         <!-- Set the background image -->
-        <Image Source="\Views\Assets\main-fight-background.jpg" Stretch="Fill"/>
-        <Label x:Name="labelFirstPlayerName" Content="Player 1" HorizontalAlignment="Left" Margin="110,185,0,0" VerticalAlignment="Top" Height="32" Width="56"/>
-        <Label x:Name="labelSecondPlayerName" Content="Player 2" HorizontalAlignment="Left" Margin="621,183,0,0" VerticalAlignment="Top" Height="32" Width="56"/>
-        <Label x:Name="labelFirstPlayerLife" Content="Life Player 1" HorizontalAlignment="Left" Margin="101,245,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="labelSecondPlayerLife" Content="Life Player 2" HorizontalAlignment="Left" Margin="612,245,0,0" VerticalAlignment="Top"/>
+        <Image Source="\Views\main-fight-background.jpg" Stretch="Fill"/>
+        <Label x:Name="labelFirstPlayerName" Content="Player 1" HorizontalAlignment="Left" Margin="119,10,0,0" VerticalAlignment="Top" Height="32" Width="74" FontFamily="Gill Sans Nova Cond Ultra Bold" FontSize="14" FontWeight="Bold"/>
+        <Label x:Name="labelSecondPlayerName" Content="Player 2" HorizontalAlignment="Left" Margin="617,10,0,0" VerticalAlignment="Top" Height="32" Width="70" FontFamily="Gill Sans Nova Cond Ultra Bold" FontSize="14"/>
+        <Label x:Name="labelFirstPlayerLife" Content="Life Player 1" HorizontalAlignment="Left" Margin="118,70,0,0" VerticalAlignment="Top" FontFamily="Gill Sans Nova Cond Ultra Bold" FontSize="14"/>
+        <Label x:Name="labelSecondPlayerLife" Content="Life Player 2" HorizontalAlignment="Left" Margin="617,66,0,0" VerticalAlignment="Top" FontFamily="Gill Sans Nova Cond Ultra Bold" FontSize="14"/>
 
         <!-- Rounded buttons -->
         <Button x:Name="buttonWeakHit" Content="Pumn in gura" HorizontalAlignment="Left" Margin="132,335,0,0" VerticalAlignment="Top" Height="42" Width="144" FontFamily="Showcard Gothic" FontSize="11" Foreground="#FF301805" BorderBrush="#FFE31919">
@@ -43,9 +43,9 @@
             </Button.Template>
         </Button>
 
-        <Label x:Name="labelFirstPlayerPower" Content="Power Player 1" HorizontalAlignment="Left" Margin="94,217,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="labelSecondPlayerPower" Content="Power Player 2" HorizontalAlignment="Left" Margin="605,212,0,0" VerticalAlignment="Top"/>
-        <Image x:Name="imagePlayer1" HorizontalAlignment="Left" Height="214" Margin="443,0,0,0" VerticalAlignment="Center" Width="386" Source="\Views\Assets\fighter2.png" RenderTransformOrigin="0.5,0.5">
+        <Label x:Name="labelFirstPlayerPower" Content="Power Player 1" HorizontalAlignment="Left" Margin="119,42,0,0" VerticalAlignment="Top" FontFamily="Gill Sans Nova Cond Ultra Bold" FontSize="14"/>
+        <Label x:Name="labelSecondPlayerPower" Content="Power Player 2" HorizontalAlignment="Left" Margin="617,38,0,0" VerticalAlignment="Top" FontFamily="Gill Sans Nova Cond Ultra Bold" FontSize="14"/>
+        <Image x:Name="imagePlayer1" HorizontalAlignment="Left" Height="214" Margin="516,98,0,0" VerticalAlignment="Top" Width="386" Source="\Views\fighter1.png" RenderTransformOrigin="0.5,0.5">
             <Image.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform ScaleX="-1"/>
@@ -55,8 +55,8 @@
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
-        <Image x:Name="imagePlayer2" HorizontalAlignment="Left" Height="225" Margin="132,95,0,0" VerticalAlignment="Top" Width="369" Source="\Views\Assets\fighter1.png"/>
-        <ScrollViewer x:Name="chatScrollView" HorizontalAlignment="Left" Height="222" Margin="343,88,0,0" VerticalAlignment="Top" Width="165"/>
+        <Image x:Name="imagePlayer2" HorizontalAlignment="Left" Height="225" Margin="118,84,0,0" VerticalAlignment="Top" Width="369" Source="\Views\fighter2.png"/>
+        <ScrollViewer x:Name="chatScrollView" HorizontalAlignment="Left" Height="222" Margin="339,84,0,0" VerticalAlignment="Top" Width="165"/>
 
     </Grid>
 </Window>
