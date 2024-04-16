@@ -8,7 +8,7 @@
         Title="Login" Height="450" Width="800">
     <Grid>
         <!-- Background Image -->
-        <Image Source="\Views\background-login.jpg" Stretch="Fill"/>
+        <Image Source="https://t3.ftcdn.net/jpg/01/94/12/26/240_F_194122655_p7sT3OBURhwlvIvjWmUME5GdfMe0az8F.jpg" Stretch="Fill"/>
 
         <Grid Margin="0,149,0,0">
             <Grid.ColumnDefinitions>
@@ -49,6 +49,19 @@
                 </Button.Template>
             </Button>
             <TextBlock Grid.Row="3" x:Name="txtMessage" Margin="10,10,10,10" Foreground="Red" Grid.ColumnSpan="5"/>
+            <Button Grid.Row="3" Content="Register" Margin="298,83,170,-68" Click="Login_Click" Background="#FFFF7844" BorderBrush="#FFA64942" FontSize="14" Foreground="#FF522200" Grid.ColumnSpan="4" FontWeight="Bold">
+                <Button.Template>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="1"
+                            CornerRadius="20">
+                            <!-- Adjust the CornerRadius value to change the roundness of corners -->
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
         </Grid>
     </Grid>
 </Window>
