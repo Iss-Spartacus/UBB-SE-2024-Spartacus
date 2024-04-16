@@ -26,7 +26,7 @@ namespace DataAccessLibrary.Repository
             SqlCommand command = connection.CreateCommand();
             command.CommandType = CommandType.Text;
             command.CommandText = @"
-        INSERT INTO Employees (FullName, Power, Money, PhotoFilePath, ReadyToFight, AccountId)
+        INSERT INTO Employee (FullName, Power, Money, PhotoFilePath, ReadyToFight, AccountId)
         VALUES (@FullName, @Power, @Money, @PhotoFilePath, @ReadyToFight, @AccountId);
         SELECT SCOPE_IDENTITY();";
             command.Parameters.AddWithValue("@FullName", entity.FullName);
@@ -46,7 +46,7 @@ namespace DataAccessLibrary.Repository
 
             SqlCommand command = connection.CreateCommand();
             command.CommandType = CommandType.Text;
-            command.CommandText = "DELETE FROM Employees WHERE Employees.id = @id";
+            command.CommandText = "DELETE FROM Employee WHERE Employees.id = @id";
             command.Parameters.AddWithValue("@id", id);
 
             int rowsAffected = command.ExecuteNonQuery();
@@ -60,7 +60,7 @@ namespace DataAccessLibrary.Repository
             SqlCommand command = connection.CreateCommand();
             command.CommandType = CommandType.Text;
             command.CommandText = @"
-        UPDATE Employees
+        UPDATE Employee
         SET FullName = @FullName,
             Power = @Power,
             Money = @Money,
@@ -86,7 +86,7 @@ namespace DataAccessLibrary.Repository
 
             SqlCommand command = connection.CreateCommand();
             command.CommandType = CommandType.Text;
-            command.CommandText = "SELECT * FROM Employees";
+            command.CommandText = "SELECT * FROM Employee";
 
             SqlDataReader reader = command.ExecuteReader();
             List<Employee> employees = new List<Employee>();
@@ -116,7 +116,7 @@ namespace DataAccessLibrary.Repository
 
             SqlCommand command = connection.CreateCommand();
             command.CommandType = CommandType.Text;
-            command.CommandText = "SELECT * FROM Employees WHERE Id = @entityId";
+            command.CommandText = "SELECT * FROM Employee WHERE employee_id = @entityId";
             command.Parameters.AddWithValue("@entityId", entityId);
 
             SqlDataReader reader = command.ExecuteReader();

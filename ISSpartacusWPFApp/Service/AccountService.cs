@@ -46,5 +46,11 @@ namespace ISSpartacusWPFApp.Service
         {
             return accountRepository.UpdateEntity(id, entity);
         }
+
+        public Account GetAccountByEmailService(string email)
+        {
+            var accounts = GetAllEntitiesService();
+            return accounts.FirstOrDefault(acc => acc.Email == email);
+        }
     }
 }

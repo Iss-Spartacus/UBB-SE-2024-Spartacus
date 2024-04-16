@@ -38,6 +38,12 @@ namespace ISSpartacusWPFApp.Service
             return matchRepository.UpdateEntity(id, entity);
         }
 
+        public Match GetOnGoingMatchService()
+        {
+            var matches = GetAllEntitiesService();
+            return matches.FirstOrDefault(match => match.WinnerId == 0);
+        }
+        
         public Match GetMatchById(int matchId)
         {
             return matchRepository.GetEntity(matchId);

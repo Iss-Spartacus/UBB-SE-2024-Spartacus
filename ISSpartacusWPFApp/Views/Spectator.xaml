@@ -8,19 +8,24 @@
         Title="Spectator" Height="450" Width="800">
     <Grid>
         <Grid>
-            <Label x:Name="labelFirstPlayerName" Content="Player 1" HorizontalAlignment="Left" Margin="110,185,0,0" VerticalAlignment="Top" Height="32" Width="56"/>
-            <Label x:Name="labelSecondPlayerName" Content="Player 2" HorizontalAlignment="Left" Margin="621,183,0,0" VerticalAlignment="Top" Height="32" Width="56"/>
-            <Label x:Name="labelFirstPlayerLife" Content="Life Player 1" HorizontalAlignment="Left" Margin="101,245,0,0" VerticalAlignment="Top"/>
-            <Label x:Name="labelSecondPlayerLife" Content="Life Player 2" HorizontalAlignment="Left" Margin="612,245,0,0" VerticalAlignment="Top"/>
-            <Button x:Name="buttonPariuFirstPlayer" Content="1 Milion pe Player 1" HorizontalAlignment="Left" Margin="69,330,0,0" VerticalAlignment="Top" Height="32" Width="138"/>
-            <Button x:Name="buttonPariuSecondPlayer" Content="1 Milion pe Player 2" HorizontalAlignment="Left" Margin="580,330,0,0" VerticalAlignment="Top" Height="32" Width="138"/>
-            <Label x:Name="labelFirstPlayerPower" Content="Power Player 1" HorizontalAlignment="Left" Margin="94,217,0,0" VerticalAlignment="Top"/>
-            <Label x:Name="labelSecondPlayerPower" Content="Power Player 2" HorizontalAlignment="Left" Margin="605,212,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="labelFirstPlayerName" Content="Player 1" HorizontalAlignment="Left" Margin="38,185,0,0" VerticalAlignment="Top" Height="32" Width="200"/>
+            <Label x:Name="labelSecondPlayerName" Content="Player 2" HorizontalAlignment="Left" Margin="549,183,0,0" VerticalAlignment="Top" Height="32" Width="128"/>
+            <Label x:Name="labelFirstPlayerLife" Content="Life Player 1" HorizontalAlignment="Left" Margin="38,245,0,0" VerticalAlignment="Top" Width="200"/>
+            <Label x:Name="labelSecondPlayerLife" Content="Life Player 2" HorizontalAlignment="Left" Margin="549,245,0,0" VerticalAlignment="Top" Width="137"/>
+            <Button x:Name="betOnFirstPlayerButton" Content="Bet" HorizontalAlignment="Left" Margin="233,378,0,0" VerticalAlignment="Top" Height="32" Width="55" Click="betOnFirstPlayerButton_Click"/>
+
+            <Button x:Name="betOnSecondPlayerButton" Content="Bet" HorizontalAlignment="Left" Margin="502,378,0,0" VerticalAlignment="Top" Height="32" Width="55" Click="betOnSecondPlayerButton_Click"/>
+            <Label x:Name="labelFirstPlayerPower" Content="Power Player 1" HorizontalAlignment="Left" Margin="38,217,0,0" VerticalAlignment="Top" Width="200"/>
+            <Label x:Name="labelSecondPlayerPower" Content="Power Player 2" HorizontalAlignment="Left" Margin="549,212,0,0" VerticalAlignment="Top" Width="143"/>
             <Image x:Name="imageSecondPlayer" HorizontalAlignment="Left" Height="153" Margin="38,22,0,0" VerticalAlignment="Top" Width="200" Source="/Views/geacnoris.jpg"/>
             <Image x:Name="imageFirstPlayer" HorizontalAlignment="Left" Height="156" Margin="549,22,0,0" VerticalAlignment="Top" Width="200" Source="/Views/brusli.jpg"/>
-            <Label x:Name="labelCotaFirstPlayer" Content="Cota Player 1" HorizontalAlignment="Left" Margin="101,299,0,0" VerticalAlignment="Top"/>
-            <Label x:Name="labelCotaSecondPlayer" Content="Cota Player 2" HorizontalAlignment="Left" Margin="609,299,0,0" VerticalAlignment="Top"/>
-            <ScrollViewer x:Name="chatScrollView" HorizontalAlignment="Center" Height="274" Margin="0,13,0,0" VerticalAlignment="Top" Width="204"/>
+            <Label x:Name="labelFirstPlayerOdd" Content="Cota Player 1" HorizontalAlignment="Left" Margin="38,299,0,0" VerticalAlignment="Top" Width="200"/>
+            <Label x:Name="labelSecondPlayerOdd" Content="Cota Player 2" HorizontalAlignment="Left" Margin="609,299,0,0" VerticalAlignment="Top"/>
+            <ScrollViewer x:Name="chatScrollView" HorizontalAlignment="Center" Height="274" Margin="0,22,0,0" VerticalAlignment="Top" Width="204"/>
+
+            <Label x:Name="betAmountLabel" Content="Bet Amount:" HorizontalAlignment="Left" Margin="348,347,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="betAmountTextBox" HorizontalAlignment="Center" VerticalAlignment="Top"
+                 Width="104" Height="30" Margin="0,378,0,0" PreviewTextInput="NumericTextBox_PreviewTextInput"/>
         </Grid>
     </Grid>
 </Window>

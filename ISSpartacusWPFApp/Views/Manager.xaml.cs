@@ -1,4 +1,4 @@
-﻿using ConfigurationLoader;
+using ConfigurationLoader;
 using DataAccessLibrary.Model;
 using DataAccessLibrary.Repository;
 using ISSpartacusWPFApp.Service;
@@ -25,14 +25,16 @@ namespace ISSpartacusWPFApp.Views
     /// </summary>
     public partial class Manager : Window
     {
+        private readonly Account _account;
         private EmployeeService employeeService;
         DataAccessLibrary.Model.Employee fighterOne;
         DataAccessLibrary.Model.Employee fighterTwo;
         private readonly MatchService matchService;
 
-        public Manager()
+        public Manager(Account account)
         {
             InitializeComponent();
+            _account = account;
             ConfigurationLoader.Configuration config = new ConfigurationLoader.Configuration();
             config.LoadFromJson("ConfigurationFile.json");
             employeeService = new EmployeeService(new EmployeeRepository(config));
@@ -55,7 +57,18 @@ namespace ISSpartacusWPFApp.Views
         
         private void spectateButton_Click(object sender, RoutedEventArgs e)
         {
-            Spectator spectatorWindow = new Spectator();
+            ConfigurationLoader.Configuration config = new ConfigurationLoader.Configuration();
+            config.LoadFromJson("ConfigurationFile.json");
+            var matchRepository = new MatchRepository(config);
+            var matchService = new MatchService(matchRepository);
+
+            var currentMatch = matchService.GetOnGoingMatchService();
+            if (currentMatch == null)
+            {
+                MessageBox.Show("No on-going match for now", "Sorry", MessageBoxButton.OK, MessageBoxImage.Information);
+                return;
+            }
+            Spectator spectatorWindow = new Spectator(_account, currentMatch);
             spectatorWindow.Show();
         }
 
