@@ -64,5 +64,11 @@ namespace ISSpartacusWPFApp.Views.Authentication
             }
         }
 
+        private void Register_From_Login_Button(object sender, RoutedEventArgs e)
+        {
+            Register newRegistration = new Register();
+            newRegistration.Show();
+            this.Close();
+        }
     }
 }

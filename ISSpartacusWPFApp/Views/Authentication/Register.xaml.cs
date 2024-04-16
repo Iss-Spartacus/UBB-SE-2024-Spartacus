@@ -31,6 +31,7 @@ namespace ISSpartacusWPFApp.Views.Authentication
             Configuration config = new Configuration();
             config.LoadFromJson("ConfigurationFile.json");
             AccountRepository accountRepo = new AccountRepository(config);
+            UserRepository userRepo = new UserRepository(config);
 
             string fullName = txtFullName.Text;
             string email = txtUsername.Text;
@@ -59,10 +60,17 @@ namespace ISSpartacusWPFApp.Views.Authentication
                 return;
             }
 
+            //add the account 
+            Account toBeAddedAccount = new Account(email, fullName, password, true);
+            int addedAccountId = accountRepo.AddEntity(toBeAddedAccount);
 
-            Account toBeAdded = new Account(email, fullName, password, true);
-            accountRepo.AddEntity(toBeAdded);
-            txtMessage.Text = "Successful!";
+            //add the user                     
+            DataAccessLibrary.Model.User toBeAddedUser = new DataAccessLibrary.Model.User(fullName, addedAccountId);
+            userRepo.AddEntity(toBeAddedUser);
+
+            //txtMessage.Text = "Successful!";
+
+            txtMessage.Text = addedAccountId.ToString();
 
         }
 
