@@ -76,14 +76,14 @@ namespace DataAccessLibrary.Repository
             int rowsAffected = command.ExecuteNonQuery();
             return rowsAffected > 0;
         }
-        public List<Weapon> GetAllEntities()
+        public IEnumerable<Weapon> GetAllEntities()
         {
             using SqlConnection connection = new(_connectionString);
             connection.Open();
 
             SqlCommand command = connection.CreateCommand();
             command.CommandType = CommandType.Text;
-            command.CommandText = "SELECT * FROM Weapons";
+            command.CommandText = "SELECT * FROM Weapon";
 
             SqlDataReader reader = command.ExecuteReader();
 
@@ -105,10 +105,6 @@ namespace DataAccessLibrary.Repository
             return weapons;
         }
 
-        IEnumerable<Weapon> IRepository<Weapon>.GetAllEntities()
-        {
-            throw new NotImplementedException();
-        }
 
         public Weapon? GetEntity(int entityId)
         {
