@@ -21,9 +21,8 @@ namespace DataAccessLibrary.Model
         // List of matches in the tournament
         public List<Match> Matches { get; set; } = new List<Match>();
 
-        public Tournament(int id, DateTime startDateTime, DateTime endDateTime, int arenaId, bool isFinished)
-        {
-            Id = id;
+        public Tournament(DateTime startDateTime, DateTime endDateTime, int arenaId, bool isFinished)
+        {          
             StartDateTime = startDateTime;
             EndDateTime = endDateTime;
             ArenaId = arenaId;

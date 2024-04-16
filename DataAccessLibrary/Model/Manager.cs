@@ -14,9 +14,8 @@ namespace DataAccessLibrary.Model
         public Account Account { get; set; } // Navigation property
         public Dictionary<string, int> TakenBribery { get; set; } = new Dictionary<string, int>();
 
-        public Manager(int id, string name, int accountId)
-        {
-            Id = id;
+        public Manager(string name, int accountId)
+        {       
             Name = name;
             AccountId = accountId;
         }

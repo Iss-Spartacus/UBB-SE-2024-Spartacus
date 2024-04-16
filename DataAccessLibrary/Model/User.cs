@@ -13,9 +13,8 @@ namespace DataAccessLibrary.Model
         public int AccountId { get; set; } // Foreign key reference
         public Account Account { get; set; } // Navigation property
 
-        public User(int id, string userName, int accountId)
-        {
-            Id = id;
+        public User(string userName, int accountId)
+        {          
             UserName = userName;
             AccountId = accountId;
         }
