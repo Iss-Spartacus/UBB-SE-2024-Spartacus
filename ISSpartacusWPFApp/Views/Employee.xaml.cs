@@ -52,5 +52,11 @@ namespace ISSpartacusWPFApp.Views
             MainFight fight = new MainFight(matchId, EmployeeID, matchService);
             fight.Show();
         }
+
+        private void Buy_Weapon_Button_Click(object sender, RoutedEventArgs e)
+        {
+            Buy_Weapons weapon_page= new Buy_Weapons();
+            weapon_page.Show();
+        }
     }
 }
