@@ -6,19 +6,57 @@
         xmlns:local="clr-namespace:ISSpartacusWPFApp.Views"
         mc:Ignorable="d"
         Title="MainFight" Height="450" Width="800">
-    <Grid>
+    <Grid >
+        <!-- Set the background image -->
+        <Image Source="\Views\Assets\main-fight-background.jpg" Stretch="Fill"/>
         <Label x:Name="labelFirstPlayerName" Content="Player 1" HorizontalAlignment="Left" Margin="110,185,0,0" VerticalAlignment="Top" Height="32" Width="56"/>
         <Label x:Name="labelSecondPlayerName" Content="Player 2" HorizontalAlignment="Left" Margin="621,183,0,0" VerticalAlignment="Top" Height="32" Width="56"/>
         <Label x:Name="labelFirstPlayerLife" Content="Life Player 1" HorizontalAlignment="Left" Margin="101,245,0,0" VerticalAlignment="Top"/>
         <Label x:Name="labelSecondPlayerLife" Content="Life Player 2" HorizontalAlignment="Left" Margin="612,245,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="buttonWeakHit" Content="Pumn in gura" HorizontalAlignment="Left" Margin="132,335,0,0" VerticalAlignment="Top" Height="32" Width="138"/>
-        <Button x:Name="buttonMediumHit" Content="Picior in cap" HorizontalAlignment="Left" Margin="317,335,0,0" VerticalAlignment="Top" Height="32" Width="138"/>
-        <Button x:Name="buttonPowerfulHit" Content="Perversa de pe Tg. Ocna" HorizontalAlignment="Left" Margin="510,335,0,0" VerticalAlignment="Top" Height="32" Width="139"/>
+
+        <!-- Rounded buttons -->
+        <Button x:Name="buttonWeakHit" Content="Pumn in gura" HorizontalAlignment="Left" Margin="132,335,0,0" VerticalAlignment="Top" Height="42" Width="144" FontFamily="Showcard Gothic" FontSize="11" Foreground="#FF301805" BorderBrush="#FFE31919">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="#A64942" BorderBrush="#FFA64942" BorderThickness="1" CornerRadius="20">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <Button x:Name="buttonMediumHit" Content="Picior in cap" HorizontalAlignment="Left" Margin="317,335,0,0" VerticalAlignment="Top" Height="42" Width="149" FontFamily="Showcard Gothic" Background="#FF27109A" Foreground="#FF34335C" FontSize="11">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="#50727B" BorderBrush="#FFA64942" BorderThickness="1" CornerRadius="20">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <Button x:Name="buttonPowerfulHit" Content="Perversa de pe Tg. Ocna" HorizontalAlignment="Left" Margin="510,335,0,0" VerticalAlignment="Top" Height="42" Width="149" BorderBrush="#FF903B12" Background="Gold" FontFamily="Showcard Gothic" FontSize="10" Foreground="#FFCA3E3E">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="#FFD700" BorderBrush="#FFA64942" BorderThickness="1" CornerRadius="20">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+
         <Label x:Name="labelFirstPlayerPower" Content="Power Player 1" HorizontalAlignment="Left" Margin="94,217,0,0" VerticalAlignment="Top"/>
         <Label x:Name="labelSecondPlayerPower" Content="Power Player 2" HorizontalAlignment="Left" Margin="605,212,0,0" VerticalAlignment="Top"/>
-        <Image x:Name="imagePlayer1" HorizontalAlignment="Left" Height="153" Margin="38,22,0,0" VerticalAlignment="Top" Width="200" Source="/Views/geacnoris.jpg"/>
-        <Image x:Name="imagePlayer2" HorizontalAlignment="Left" Height="156" Margin="549,22,0,0" VerticalAlignment="Top" Width="200" Source="/Views/brusli.jpg"/>
-        <ScrollViewer x:Name="chatScrollView" HorizontalAlignment="Left" Height="274" Margin="284,10,0,0" VerticalAlignment="Top" Width="204"/>
+        <Image x:Name="imagePlayer1" HorizontalAlignment="Left" Height="214" Margin="443,0,0,0" VerticalAlignment="Center" Width="386" Source="\Views\Assets\fighter2.png" RenderTransformOrigin="0.5,0.5">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.92"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <Image x:Name="imagePlayer2" HorizontalAlignment="Left" Height="225" Margin="132,95,0,0" VerticalAlignment="Top" Width="369" Source="\Views\Assets\fighter1.png"/>
+        <ScrollViewer x:Name="chatScrollView" HorizontalAlignment="Left" Height="222" Margin="343,88,0,0" VerticalAlignment="Top" Width="165"/>
 
     </Grid>
 </Window>
