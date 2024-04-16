@@ -9,7 +9,7 @@
       Title="Weapons">
 
     <Grid Background="Red">
-        <ListView ItemsSource="{Binding Weapons}" SelectionChanged="ListView_SelectionChanged">
+        <ListView x:Name="listViewWeapons" ItemsSource="{Binding Weapons}" SelectionChanged="ListView_SelectionChanged">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" />

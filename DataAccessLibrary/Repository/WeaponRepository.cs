@@ -59,20 +59,41 @@ namespace DataAccessLibrary.Repository
             SqlCommand command = connection.CreateCommand();
             command.CommandType = CommandType.Text;
             command.CommandText = @"
-        UPDATE Weapons
-        SET Name = @Name,
-            Power = @Power,
-            Type = @Type,
-            Price = @Price,
-            Availability = @Availability
-        WHERE Weapons.id = @id";
+        UPDATE Weapon
+        SET weapon_name = @Name,
+            weapon_power = @Power,
+            weapon_type = @Type,
+            weapon_price = @Price,
+            weapon_availability = @Availability
+        WHERE Weapon.weapon_id = @id";
             command.Parameters.AddWithValue("@Name", entity.Name);
             command.Parameters.AddWithValue("@Power", entity.Power);
             command.Parameters.AddWithValue("@Type", entity.Type);
             command.Parameters.AddWithValue("@Price", entity.Price);
             command.Parameters.AddWithValue("@Availability", entity.Availability);
             command.Parameters.AddWithValue("@id", id);
+            int rowsAffected = command.ExecuteNonQuery();
+            return rowsAffected > 0;
+        }
+        public bool zUpdateEntityByName(string name, Weapon entity)
+        {
+            using SqlConnection connection = new(_connectionString);
+            connection.Open();
 
+            SqlCommand command = connection.CreateCommand();
+            command.CommandType = CommandType.Text;
+            command.CommandText = @"
+            UPDATE Weapon
+                SET weapon_power = @Power,
+                    weapon_type = @Type,
+                    weapon_price = @Price,
+                    weapon_availability = @Availability
+            WHERE Weapon.weapon_name = @OriginalName";
+            command.Parameters.AddWithValue("@Power", entity.Power);
+            command.Parameters.AddWithValue("@Type", entity.Type);
+            command.Parameters.AddWithValue("@Price", entity.Price);
+            command.Parameters.AddWithValue("@Availability", entity.Availability);
+            command.Parameters.AddWithValue("@OriginalName", name);
             int rowsAffected = command.ExecuteNonQuery();
             return rowsAffected > 0;
         }
@@ -135,5 +156,6 @@ namespace DataAccessLibrary.Repository
                 return null; // Weapon not found
             }
         }
+        
     }
 }

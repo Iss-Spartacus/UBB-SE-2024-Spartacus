@@ -1,27 +1,13 @@
 ﻿using DataAccessLibrary.Model;
+using DataAccessLibrary.Repository;
+using ISSpartacusWPFApp.Service;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using DataAccessLibrary.Repository;
-using System.IO;
-using ISSpartacusWPFApp.Service;
+
 namespace ISSpartacusWPFApp.Views
 {
-    /// <summary>
-    /// Interaction logic for Weapons.xaml
-    /// </summary>
     public partial class Weapons : Page
     {
         public Weapons()
@@ -29,9 +15,11 @@ namespace ISSpartacusWPFApp.Views
             InitializeComponent();
             DataContext = new WeaponsViewModel();
         }
+
         public class WeaponsViewModel
         {
             public ObservableCollection<Weapon> Weapons { get; set; }
+            public Weapon? SelectedWeapon { get; set; }
 
             public WeaponsViewModel()
             {
@@ -40,7 +28,6 @@ namespace ISSpartacusWPFApp.Views
 
             private List<Weapon> GetWeapons()
             {
-                // Call your repository here and return the list of weapons
                 ConfigurationLoader.Configuration config = new ConfigurationLoader.Configuration();
                 config.LoadFromJson("ConfigurationFile.json");
                 WeaponRepository repository = new WeaponRepository(config);
@@ -48,14 +35,32 @@ namespace ISSpartacusWPFApp.Views
                 return service.GetAvailableWeaponsService().ToList();
             }
         }
+
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            if (listViewWeapons.SelectedItem is Weapon selectedWeapon)
+            {
+                ((WeaponsViewModel)DataContext).SelectedWeapon = selectedWeapon;
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            if (((WeaponsViewModel)DataContext).SelectedWeapon is Weapon selectedWeapon)
+            {
+                ConfigurationLoader.Configuration config = new ConfigurationLoader.Configuration();
+                config.LoadFromJson("ConfigurationFile.json");
+                WeaponRepository repository = new WeaponRepository(config);
+                WeaponService service = new WeaponService(repository);
+                //check if the balance is enough
+                //
+                selectedWeapon.Availability = false;
+                repository.zUpdateEntityByName(selectedWeapon.Name,selectedWeapon);
 
+                // Refresh the list of available weapons
+                ((WeaponsViewModel)DataContext).Weapons = new ObservableCollection<Weapon>(service.GetAvailableWeaponsService().ToList());
+                MessageBox.Show($"The weapon {selectedWeapon.Name} has been bought.", "Weapon Bought", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
     }
 }
