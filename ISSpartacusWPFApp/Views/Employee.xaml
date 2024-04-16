@@ -26,7 +26,7 @@
                     <Button Content="Bribe Manager" Width="200" Background="#FF7844" Foreground="#FF1B1F3A" Margin="0,0,0,10" FontFamily="Bernard MT Condensed" FontSize="16"/>
                     <Button Content="Bet on a Player" Width="200" Background="#FF7844" Foreground="#FF1B1F3A" Margin="0,0,0,10" FontFamily="Bernard MT Condensed" FontSize="16"/>
                     <Button Content="STATS" Width="200" Background="#FF7844" Foreground="#FF1B1F3A" Margin="0,0,0,10" FontSize="20" FontFamily="Bernard MT Condensed"/>
-                    <Button Content="PLAY" Width="200" Background="#FF7844" Foreground="#FF1B1F3A" Margin="0,0,0,10" FontSize="20" FontFamily="Bernard MT Condensed"/>
+                    <Button Content="PLAY" Width="200" Background="#FF7844" Foreground="#FF1B1F3A" Margin="0,0,0,10" FontSize="20" FontFamily="Bernard MT Condensed" Click="Play_Button_Click"/>
                 </StackPanel>
             </StackPanel>
         </Grid>

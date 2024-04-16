@@ -34,5 +34,12 @@ namespace ISSpartacusWPFApp.Views
         {
 
         }
+
+        private void Play_Button_Click(object sender, RoutedEventArgs e)
+        {
+            //TODO if to check the employee is really in a fight
+            MainFight fight = new MainFight();
+            fight.Show();
+        }
     }
 }
