@@ -7,14 +7,28 @@
         mc:Ignorable="d"
         Title="User" Height="450" Width="800">
     <Grid>
-        <TextBlock HorizontalAlignment="Left" Height="28" Margin="10,71,0,0" TextWrapping="Wrap" Text="Balance:" VerticalAlignment="Top" Width="84" FontSize="20"/>
-        <TextBlock x:Name="balance" HorizontalAlignment="Left" Height="28" Margin="99,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="73" FontSize="20"/>
-        <Rectangle HorizontalAlignment="Left" Height="222" Margin="19,165,0,0" Stroke="Black" VerticalAlignment="Top" Width="245"/>
-        <Button x:Name="spectateButton" Content="Spectate" HorizontalAlignment="Left" Height="23" Margin="55,216,0,0" VerticalAlignment="Top" Width="173"/>
-        <Button x:Name="viewMatchesButton" Content="View Matches" HorizontalAlignment="Left" Height="23" Margin="55,275,0,0" VerticalAlignment="Top" Width="173" Click="viewMatchesButton_Click"/>
-        <Button x:Name="betOnPlayerButton" Content="Bet on a Player" HorizontalAlignment="Left" Height="23" Margin="55,334,0,0" VerticalAlignment="Top" Width="173" Click="betOnPlayerButton_Click"/>
-        <Rectangle HorizontalAlignment="Left" Height="34" Margin="19,165,0,0" Stroke="Black" VerticalAlignment="Top" Width="245"/>
-        <TextBlock HorizontalAlignment="Left" Height="34" Margin="105,165,0,0" TextWrapping="Wrap" Text="Options" VerticalAlignment="Top" Width="73" FontSize="20"/>
+        <Image Source="https://t3.ftcdn.net/jpg/06/45/28/16/240_F_645281695_sUpMS4N3hR6DganvJ8QWFY6GkYRscOrq.jpg"
+               Stretch="UniformToFill" Opacity="1"/>
 
+        <!-- User Title -->
+        <TextBlock Text="User" FontSize="50" Foreground="#FF7844" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0" Opacity="0.7" FontFamily="Stencil"/>
+
+        <!-- Main Content -->
+        <Grid Background="Transparent" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel>
+                <!-- Balance -->
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
+                    <TextBlock Text="Balance: " FontSize="25" Foreground="#FF7844" FontFamily="Stencil"/>
+                    <TextBlock Text="1500" FontSize="25" Foreground="#FF7844" FontFamily="Stencil"/>
+                </StackPanel>
+
+                <!-- Buttons -->
+                <StackPanel>
+                    <Button Content="Spectate" Width="160" Background="#FF7844" Foreground="#FFA64942" Margin="0,0,0,10" FontSize="18" FontFamily="Bernard MT Condensed"/>
+                    <Button Content="View Matches" Width="160" Background="#FF7844" Foreground="#FFA64942" Margin="0,0,0,10" FontSize="18" FontFamily="Bernard MT Condensed"/>
+                    <Button Content="Bet on a Player" Width="160" Background="#FF7844" Foreground="#FFA64942" Margin="0,0,0,10" FontSize="18" FontFamily="Bernard MT Condensed"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>
