@@ -50,19 +50,20 @@
                     </ControlTemplate>
                 </Button.Template>
             </Button>
-            <Button Grid.Row="5" Content="Register now" Margin="289,10,161,20" Grid.ColumnSpan="4" FontSize="12" Padding="8,4" Background="#FFAABBCC" BorderBrush="#FF8899AA" Foreground="#FF112233" Click="Register_From_Login_Button">
+            <Button Grid.Row="5" Content="Register now" Margin="289,21,161,-6" Grid.ColumnSpan="4" FontSize="12" Padding="8,4" Background="#FF7844" BorderBrush="#FF522200" Foreground="#FF522200" Click="Register_From_Login_Button">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <Border Background="{TemplateBinding Background}"
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="1"
-                                CornerRadius="10">
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="1"
+                    CornerRadius="10">
                             <!-- Adjust the CornerRadius value to change the roundness of corners -->
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
                     </ControlTemplate>
                 </Button.Template>
             </Button>
+
             <TextBlock Grid.Row="3" x:Name="txtMessage" Margin="10,10,10,10" Foreground="Red" Grid.ColumnSpan="5"/>
         </Grid>
     </Grid>
