@@ -10,7 +10,7 @@ using Microsoft.Data.SqlClient;
 
 namespace DataAccessLibrary.Repository
 {
-    public class AccountRepository : IRepository<Account>
+    public class AccountRepository : IRepository<Model.Account>
     {
         private readonly string _connectionString;
 
@@ -18,7 +18,7 @@ namespace DataAccessLibrary.Repository
         {
             _connectionString = configurationManager.GetConnectionString("connectionSpartacus");
         }
-        public int AddEntity(Account entity)
+        public int AddEntity(Model.Account entity)
         {
             using SqlConnection connection = new(_connectionString);
             connection.Open();
@@ -37,7 +37,7 @@ namespace DataAccessLibrary.Repository
             int newAccountId = Convert.ToInt32(command.ExecuteScalar());
             return newAccountId;
         }
-        public bool DeleteEntity(int id, Account entity)
+        public bool DeleteEntity(int id, Model.Account entity)
         {
             using SqlConnection connection = new(_connectionString);
             connection.Open();
@@ -50,7 +50,7 @@ namespace DataAccessLibrary.Repository
             int rowsAffected = command.ExecuteNonQuery();
             return rowsAffected > 0;
         }
-        public bool UpdateEntity(int id, Account entity)
+        public bool UpdateEntity(int id, Model.Account entity)
         {
             using SqlConnection connection = new(_connectionString);
             connection.Open();
@@ -73,7 +73,7 @@ namespace DataAccessLibrary.Repository
             int rowsAffected = command.ExecuteNonQuery();
             return rowsAffected > 0;
         }
-        public IEnumerable<Account> GetAllEntities()
+        public IEnumerable<Model.Account> GetAllEntities()
         {
             using SqlConnection connection = new(_connectionString);
             connection.Open();
@@ -83,11 +83,11 @@ namespace DataAccessLibrary.Repository
             command.CommandText = "SELECT * FROM Account";
 
             SqlDataReader reader = command.ExecuteReader();
-            List<Account> accounts = new List<Account>();
+            List<Model.Account> accounts = new List<Model.Account>();
 
             while (reader.Read())
             {
-                Account account = new Account
+                Model.Account account = new Model.Account
                 (
                     email: reader.GetString(1),
                     username: reader.GetString(2),
@@ -101,7 +101,7 @@ namespace DataAccessLibrary.Repository
             return accounts;
         }
 
-        public Account? GetEntity(int entityId)
+        public Model.Account? GetEntity(int entityId)
         {
             throw new NotImplementedException();
         }
