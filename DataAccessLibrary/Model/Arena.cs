@@ -12,9 +12,8 @@ namespace DataAccessLibrary.Model
         public int Capacity { get; set; }
         public string Location { get; set; }
 
-        public Arena(int id, int capacity, string location)
+        public Arena(int capacity, string location)
         {
-            Id = id;
             Capacity = capacity;
             Location = location;
         }
