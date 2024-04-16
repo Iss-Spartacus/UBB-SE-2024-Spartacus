@@ -97,8 +97,7 @@ namespace DataAccessLibrary.Repository
                     employee1Id : reader.GetInt32(2),
                     employee2Id : reader.GetInt32(3),
                     registrationDate : reader.GetDateTime(4),
-                    winnerId : reader.GetInt32(5),
-                    matchEmployee2Turn: reader.GetBoolean(6)
+                    winnerId : reader.GetInt32(5)
                 );
                 match.Id = reader.GetInt32(0);
 
@@ -133,8 +132,7 @@ namespace DataAccessLibrary.Repository
                 employee1Id: reader.GetInt32(2),
                 employee2Id: reader.GetInt32(3),
                 registrationDate: reader.GetDateTime(4),
-                winnerId: reader.GetInt32(5),
-                matchEmployee2Turn: reader.GetBoolean(6)
+                winnerId: reader.GetInt32(5)
             );
 
             match.Id = reader.GetInt32(0);

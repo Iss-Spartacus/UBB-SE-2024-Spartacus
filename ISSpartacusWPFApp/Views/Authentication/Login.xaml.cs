@@ -29,7 +29,7 @@ namespace ISSpartacusWPFApp.Views.Authentication
         }
         private void Login_Click(object sender, RoutedEventArgs e)
         {
-            string email = txtUsername.Text;
+            string email = txtEmail.Text;
             string password = txtPassword.Password;
 
             LoginService loginService = new LoginService();

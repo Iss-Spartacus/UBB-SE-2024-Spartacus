@@ -21,14 +21,13 @@ namespace DataAccessLibrary.Model
         public Employee Winner { get; set; } // Navigation property
         public List<MatchObserver> Observers { get; set; } = new List<MatchObserver>();
 
-        public Match(int tournamentId, int employee1Id, int employee2Id, DateTime registrationDate, int winnerId, bool matchEmployee2Turn)
+        public Match(int tournamentId, int employee1Id, int employee2Id, DateTime registrationDate, int winnerId)
         {            
             TournamentId = tournamentId;
             Employee1Id = employee1Id;
             Employee2Id = employee2Id;
             RegistrationDate = registrationDate;
             WinnerId = winnerId;
-            MatchEmployee2Turn = matchEmployee2Turn;
         }
     }
 }
