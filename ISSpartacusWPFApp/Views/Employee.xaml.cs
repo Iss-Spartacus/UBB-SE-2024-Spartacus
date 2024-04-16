@@ -24,10 +24,6 @@ namespace ISSpartacusWPFApp.Views
             InitializeComponent();
         }
 
-        private void betOnPlayerButton_Click(object sender, RoutedEventArgs e)
-        {
-            //TODO
-        }
 
         private void bribeManagerButton_Click(object sender, RoutedEventArgs e)
         {
