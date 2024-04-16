@@ -14,7 +14,7 @@
         <TextBlock Text="Manager" FontSize="50" Foreground="#A64942" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0" Opacity="0.7" FontFamily="Stencil"/>
 
         <!-- Main Content -->
-        <Grid Background="Transparent" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid Background="Transparent" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,149,0,0">
             <StackPanel>
                 <!-- Balance -->
                 <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
@@ -24,11 +24,14 @@
 
                 <!-- Buttons -->
                 <StackPanel>
-                    <Button Content="Select Employee" Width="220" Background="#A64942" Foreground="#FF53354A" Margin="0,0,0,10" FontSize="18" FontFamily="Bernard MT Condensed"/>
-                    <Button Content="Bet on a Player" Width="220" Background="#A64942" Foreground="#FF53354A" Margin="0,0,0,10" FontFamily="Bernard MT Condensed" FontSize="18"/>
-                    <Button Content="Take Bribe" Width="220" Background="#A64942" Foreground="#FF53354A" Margin="0,0,0,10" FontFamily="Bernard MT Condensed" FontSize="18"/>
+                    <Button Content="Start Fight" Width="220" Background="#A64942" Foreground="#FF53354A" Margin="0,0,0,10" FontSize="18" FontFamily="Bernard MT Condensed" Click="startFightButton_Click"/>
+                    <Button Content="Spectate Fight" Width="220" Background="#A64942" Foreground="#FF53354A" FontSize="18" FontFamily="Bernard MT Condensed" Click="spectateButton_Click"/>
                 </StackPanel>
             </StackPanel>
         </Grid>
+        <ComboBox x:Name="fighterOneComboBox" HorizontalAlignment="Left" Margin="78,0,0,0" VerticalAlignment="Center" Width="120" Text="Choose fighter 1"/>
+        <TextBlock Text="FIGHTER 1" FontSize="25" Foreground="#A64942" FontFamily="Stencil" Margin="78,149,595,233"/>
+        <TextBlock Text="FIGHTER 2" FontSize="25" Foreground="#A64942" FontFamily="Stencil" Margin="601,149,71,233"/>
+        <ComboBox x:Name="fighterTwoComboBox" HorizontalAlignment="Left" Margin="601,0,0,0" VerticalAlignment="Center" Width="120" Text="Choose fighter 2"/>
     </Grid>
 </Window>
