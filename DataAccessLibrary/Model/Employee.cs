@@ -18,7 +18,6 @@ namespace DataAccessLibrary.Model
         public Account Account { get; set; } // Navigation property
 
         public Employee(string fullName, int power, int money, string photoFilePath, bool readyToFight, int accountId)
-        {           
             FullName = fullName;
             Power = power;
             Money = money;
