@@ -10,10 +10,10 @@
         <Grid>
 
             <Image Source="https://t4.ftcdn.net/jpg/04/13/36/33/240_F_413363323_jnnN8cFUss7vxC714VRXECiLTlQd0era.jpg" Stretch="Fill" Margin="5,0,-5,0"/>
-            <Label x:Name="labelFirstPlayerName" Content="Player 1" HorizontalAlignment="Left" Margin="171,185,0,0" VerticalAlignment="Top" Height="32" Width="67" Foreground="#FFFEFEFE" FontFamily="Gill Sans Nova Cond Ultra Bold" FontSize="14" FontWeight="Bold"/>
-            <Label x:Name="labelSecondPlayerName" Content="Player 2" HorizontalAlignment="Left" Margin="591,183,0,0" VerticalAlignment="Top" Height="32" Width="70" Foreground="White" FontSize="14" FontWeight="Bold" FontFamily="Gill Sans Nova Cond Ultra Bold"/>
-            <Label x:Name="labelFirstPlayerLife" Content="Life Player 1" HorizontalAlignment="Left" Margin="162,242,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White" FontFamily="Gill Sans Nova Cond Ultra Bold" FontWeight="Bold"/>
-            <Label x:Name="labelSecondPlayerLife" Content="Life Player 2" HorizontalAlignment="Left" Margin="591,241,0,0" VerticalAlignment="Top" Foreground="#FFFAFAFA" FontFamily="Gill Sans Nova Cond Ultra Bold" FontSize="14" FontWeight="Bold"/>
+            <Label x:Name="labelFirstPlayerName" Content="Player 1" HorizontalAlignment="Left" Margin="171,185,0,0" VerticalAlignment="Top" Height="32" Width="120" Foreground="#FFFEFEFE" FontFamily="Gill Sans Nova Cond Ultra Bold" FontSize="14" FontWeight="Bold"/>
+            <Label x:Name="labelSecondPlayerName" Content="Player 2" HorizontalAlignment="Left" Margin="591,183,0,0" VerticalAlignment="Top" Height="32" Width="120" Foreground="White" FontSize="14" FontWeight="Bold" FontFamily="Gill Sans Nova Cond Ultra Bold"/>
+            <Label x:Name="labelFirstPlayerLife" Content="HP:" HorizontalAlignment="Left" Margin="162,242,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White" FontFamily="Gill Sans Nova Cond Ultra Bold" FontWeight="Bold"/>
+            <Label x:Name="labelSecondPlayerLife" Content="HP:" HorizontalAlignment="Left" Margin="591,241,0,0" VerticalAlignment="Top" Foreground="#FFFAFAFA" FontFamily="Gill Sans Nova Cond Ultra Bold" FontSize="14" FontWeight="Bold"/>
             <Button x:Name="buttonPariuFirstPlayer" HorizontalAlignment="Left" Margin="117,330,0,0" VerticalAlignment="Top" Height="50" Width="175">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
@@ -46,8 +46,8 @@
 
             <Label x:Name="labelFirstPlayerPower" Content="Power Player 1" HorizontalAlignment="Left" Margin="155,214,0,0" VerticalAlignment="Top" Foreground="White" FontSize="14" FontWeight="Bold" FontFamily="Gill Sans Nova Cond Ultra Bold"/>
             <Label x:Name="labelSecondPlayerPower" Content="Power Player 2" HorizontalAlignment="Left" Margin="575,212,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Gill Sans Nova Cond Ultra Bold" FontSize="14" FontWeight="Bold"/>
-            <Image x:Name="imageSecondPlayer" HorizontalAlignment="Left" Height="162" Margin="124,25,0,0" VerticalAlignment="Top" Width="263" Source="https://cdn-icons-png.flaticon.com/512/3863/3863608.png"/>
-            <Image x:Name="imageFirstPlayer" HorizontalAlignment="Left" Height="168" Margin="538,15,0,0" VerticalAlignment="Top" Width="241" Source="https://cdn-icons-png.freepik.com/512/6288/6288777.png" RenderTransformOrigin="0.5,0.5" OpacityMask="#FFB49090">
+            <Image x:Name="imageSecondPlayer" HorizontalAlignment="Left" Height="237" Margin="91,0,0,0" VerticalAlignment="Top" Width="329" Source="/Views/player2-icon.png"/>
+            <Image x:Name="imageFirstPlayer" HorizontalAlignment="Left" Height="231" Margin="503,-13,0,0" VerticalAlignment="Top" Width="301" Source="/Views/player1-icon.png" RenderTransformOrigin="0.5,0.5">
                 <Image.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -60,6 +60,8 @@
             <Label x:Name="labelCotaFirstPlayer" Content="Cota Player 1" HorizontalAlignment="Left" Margin="160,271,0,0" VerticalAlignment="Top" Foreground="#FFFEFEFE" FontFamily="Gill Sans Nova Cond Ultra Bold" FontSize="14"/>
             <Label x:Name="labelCotaSecondPlayer" Content="Cota Player 2" HorizontalAlignment="Left" Margin="582,271,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Gill Sans Nova Cond Ultra Bold" FontSize="14" FontWeight="Bold"/>
             <ScrollViewer x:Name="chatScrollView" HorizontalAlignment="Left" Height="274" Margin="326,25,0,0" VerticalAlignment="Top" Width="204"/>
+            <Label x:Name="labelFirstPlayerHPValue" Content="{Binding FirstPlayerHP, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="204,241,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White" FontFamily="Gill Sans Nova Cond Ultra Bold" FontWeight="Bold"/>
+            <Label x:Name="labelSecondPlayerHPValue" Content="{Binding SecondPlayerHP, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="637,241,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White" FontFamily="Gill Sans Nova Cond Ultra Bold" FontWeight="Bold"/>
         </Grid>
     </Grid>
 </Window>
